@@ -364,11 +364,11 @@ class DashboardController extends Controller
                 }
             }
             .service-card {
-                background: repeating-linear-gradient(135deg, #1c2e4a, #1c2e4a 14px, #273c5c 14px, #273c5c 28px) !important;
+                background: repeating-linear-gradient(135deg, #4c1d95, #4c1d95 14px, #6d28d9 14px, #6d28d9 28px) !important;
                 color: #ffffff !important;
                 border: none !important;
                 border-radius: 16px !important;
-                box-shadow: 0 10px 30px rgba(0,0,0,0.25) !important;
+                box-shadow: 0 10px 30px rgba(76,29,149,0.25) !important;
                 transition: all 0.3s ease-in-out !important;
                 min-height: 140px !important;
                 width: 100% !important;
@@ -440,8 +440,8 @@ class DashboardController extends Controller
                 white-space: nowrap !important;
                 margin-left: 8px !important;
             }
-            .success-label { color: #2ecc71 !important; }
-            .failure-label { color: #e74c3c !important; }
+            .success-label { color: #86efac !important; }
+            .failure-label { color: #fecaca !important; }
             
             /* Special handling for 1-2 cards */
             .service-sales-row:has(> .service-sales-col:nth-child(1):last-child) .service-sales-col {

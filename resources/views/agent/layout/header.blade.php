@@ -31,6 +31,7 @@
 
     <link href="{{url('assets/css/style.css')}}" rel="stylesheet">
     <link href="{{url('assets/css/skin-modes.css')}}" rel="stylesheet">
+    <link href="{{url('assets/css/dark-fintech-theme.css')}}" rel="stylesheet">
 
     <link href="{{url('assets/css/animate.css')}}" rel="stylesheet">
 

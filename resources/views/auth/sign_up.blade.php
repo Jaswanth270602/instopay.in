@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign Up - MarsPay</title>
+    <title>Sign Up - {{ config('app.name', 'Instopay') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Google Fonts -->
@@ -10,6 +10,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{url('assets/css/dark-fintech-theme.css')}}">
 
     <!-- Font Awesome for icons -->
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
@@ -17,7 +18,7 @@
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
-    <title>{{ $company_name }}</title>
+    <title>{{ config('app.name', 'Instopay') }}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -201,8 +202,8 @@
 <div class="signup-container">
     <!-- Left Section -->
     <div class="left-section">
-        <img src="{{ $cdnLink}}{{ $company_logo }}" alt="MarsPay Logo" style="width: 250px; margin-bottom: 40px; margin-left:22%;">
-        <h2 style= margin-left:23%;font-size:20px;>Why Choose Mars-Pay?</h2>
+        <h2 style="margin-left:23%;font-size:34px;font-weight:700;letter-spacing:0.5px;">{{ config('app.name', 'Instopay') }}</h2>
+        <h2 style= margin-left:23%;font-size:20px;>Why Choose {{ config('app.name', 'Instopay') }}?</h2>
         <ul style= margin-left:23%;>
             <li>Scalable B2B payment gateway</li>
             <li>Fast & secure online transactions</li>

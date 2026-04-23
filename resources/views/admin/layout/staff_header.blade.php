@@ -11,7 +11,7 @@
     <meta name="Keywords" content=""/>
 
     <!-- Title -->
-    <title> {{ $company_name }} </title>
+    <title>{{ config('app.name', 'Instopay') }}</title>
 
     <!--- Favicon --->
     <link rel="icon" href="https://cdn.bceres.com/admin2020/assets/img/brand/favicon.png" type="image/x-icon"/>
@@ -38,6 +38,7 @@
     <!--- Style css --->
     <link href="{{url('assets/css/style.css')}}" rel="stylesheet">
     <link href="{{url('assets/css/skin-modes.css')}}" rel="stylesheet">
+    <link href="{{url('assets/css/dark-fintech-theme.css')}}" rel="stylesheet">
 
     <!--- Animations css --->
     <link href="{{url('assets/css/animate.css')}}" rel="stylesheet">
@@ -110,11 +111,8 @@
     <div class="container">
         <div class="main-header-left ">
             <a class="animated-arrow hor-toggle horizontal-navtoggle"style="background-color:red;"><span></span></a><!-- sidebar-toggle-->
-            <a class="header-brand" href="{{url('admin/dashboard')}}">
-                <img src="{{ $cdnLink}}{{ $company_logo }}" class="logo-white ">
-                <img src="{{ $cdnLink}}{{ $company_logo }}" class="logo-default">
-                <img src="{{ $cdnLink}}{{ $company_logo }}" class="icon-white">
-                <img src="{{ $cdnLink}}{{ $company_logo }}" class="icon-default">
+            <a class="header-brand d-flex align-items-center text-white font-weight-bold" href="{{url('admin/dashboard')}}" style="font-size: 26px; letter-spacing: 0.5px;">
+                {{ config('app.name', 'Instopay') }}
             </a>
             <div class="main-header-center  ml-4">
                 <ul class="header-megamenu-dropdown  nav">
@@ -662,7 +660,7 @@
         <!-- Footer opened -->
         <div class="main-footer ht-40">
             <div class="container-fluid pd-t-0-f ht-100p">
-                <span>Copyright © 2020 <a href="#">{{ $company_name }}</a>.  All rights reserved.</span>
+                <span>Copyright © 2020 <a href="#">{{ config('app.name', 'Instopay') }}</a>. All rights reserved.</span>
             </div>
         </div>
         <!-- Footer closed -->

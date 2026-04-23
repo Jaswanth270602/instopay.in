@@ -38,9 +38,9 @@ error_reporting(E_ALL);
 // Database configuration
 
 $db_server   = 'localhost';
-$db_name     = 'd2cpay_database';
-$db_username = 'd2cpay_user';
-$db_password = 'D2cPay@1234$'; 
+$db_name     = 'instopay_database';
+$db_username = 'instopay_user';
+$db_password = 'Instopay@1234$'; 
 
 // Connection charset should be the same as the dump file charset (utf8, latin1, cp1251, koi8r etc.)
 // See http://dev.mysql.com/doc/refman/5.0/en/charset-charsets.html for the full list

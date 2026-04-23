@@ -42,6 +42,7 @@
     <link href="{{url('assets/plugins/sweet-alert/sweetalert.css')}}" rel="stylesheet">
     {{--start sweetalert js--}}
     <link media="all" type="text/css" rel="stylesheet" href="{{ $cdnLink}}themes2/plugins/select2/select2.min.css">
+    <link href="{{url('assets/css/dark-fintech-theme.css')}}" rel="stylesheet">
 
 
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>

@@ -246,29 +246,55 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>D2cPAY | Smart Payment Platform</title>
+  <title>Instopay | Smart Payment Platform</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
+    :root {
+      --pg-primary: #A855F7;
+      --pg-secondary: #7C3AED;
+      --pg-accent: #C084FC;
+      --pg-bg-main: #F4F7FF;
+      --pg-bg-card: #FFFFFF;
+      --pg-bg-surface: #EEF2FF;
+      --pg-text-primary: #0F172A;
+      --pg-text-secondary: #475569;
+      --pg-text-muted: #64748B;
+    }
     body {
-      background-color: #f9fafb;
+      background-color: var(--pg-bg-main);
       font-family: 'Poppins', sans-serif;
+      color: var(--pg-text-primary);
     }
     .brand-gradient {
-      background: linear-gradient(to right, #FF7E3F, #FF416C);
+      background: linear-gradient(to right, var(--pg-primary), var(--pg-accent));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .btn-primary {
-      background-color: #00C9FF;
+      background: linear-gradient(90deg, #9333EA, #C084FC);
       color: #fff;
     }
     .btn-primary:hover {
-      background-color: #17EAD9;
+      background: linear-gradient(90deg, #7E22CE, #00C2FF);
     }
     .section-bg {
-      background-color: #e5e7eb;
+      background-color: var(--pg-bg-surface);
+    }
+    .text-gray-900 {
+      color: var(--pg-text-primary) !important;
+    }
+    .text-gray-700 {
+      color: var(--pg-text-secondary) !important;
+    }
+    .text-gray-600 {
+      color: var(--pg-text-muted) !important;
+    }
+    .bg-white {
+      background-color: var(--pg-bg-card) !important;
+      border: 1px solid rgba(156, 163, 175, 0.2);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35) !important;
     }
   </style>
 </head>
@@ -279,7 +305,7 @@
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
       <div class="mb-10 md:mb-0 md:w-1/2">
         <h1 class="text-5xl font-bold mb-6 brand-gradient">Empower Your Digital Transactions</h1>
-        <p class="text-lg mb-6 text-gray-700">With D2cPAY, enjoy smart, swift, and secure financial services built for the future.</p>
+        <p class="text-lg mb-6 text-gray-700">With Instopay, enjoy smart, swift, and secure financial services built for the future.</p>
         <a href="#" class="btn-primary px-6 py-3 rounded-lg shadow-lg">Start Now</a>
       </div>
       <div class="md:w-1/2" data-aos="zoom-in">
@@ -360,7 +386,7 @@
   <section class="section-bg py-20 px-8 text-gray-900" data-aos="fade-up">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-3xl font-bold brand-gradient mb-6">Ready to Power Your Payments?</h2>
-      <p class="text-gray-600 mb-8">Join thousands of businesses already processing secure payments with D2cPAY. It’s your time now.</p>
+      <p class="text-gray-600 mb-8">Join thousands of businesses already processing secure payments with Instopay. It’s your time now.</p>
       <!--<a href="#" class="btn-primary px-6 py-3 rounded-lg shadow-lg">Create Your Free Account</a>-->
     </div>
   </section>

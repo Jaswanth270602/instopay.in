@@ -10,7 +10,7 @@
     <meta name="description" content="Osahan Fashion - Bootstrap 4 E-Commerce Theme">
     <meta name="keywords" content="Osahan, fashion, Bootstrap4, shop, e-commerce, modern, flat style, responsive, online store, business, mobile, blog, bootstrap 4, html5, css3, jquery, js, gallery, slider, touch, creative, clean">
     <meta name="author" content="Askbootstrap">
-    <title>{{ $company_name }}</title>
+    <title>{{ config('app.name', 'Instopay') }}</title>
 
     <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon.png">
     <link rel="icon" type="image/png" href="images/favicon.png">
@@ -18,6 +18,7 @@
     <link href="{{url('ecommerce/css/bootstrap.min.css')}}" rel="stylesheet">
 
     <link href="{{url('ecommerce/css/style.css')}}" rel="stylesheet">
+    <link href="{{url('assets/css/dark-fintech-theme.css')}}" rel="stylesheet">
     <link href="{{url('ecommerce/css/animate.css')}}" rel="stylesheet">
     <link href="{{url('ecommerce/css/animate.css')}}" rel="stylesheet">
     <link href="{{url('ecommerce/css/mobile.css')}}" rel="stylesheet">
@@ -204,7 +205,7 @@
 </div>
 <nav class="navbar navbar-expand-lg navbar-light bg-faded osahan-menu">
     <div class="container">
-        <a class="navbar-brand" href="{{url('')}}"> <img src="{{ $company_logo }}" alt="logo" style="height: 60px;"> </a>
+        <a class="navbar-brand font-weight-bold" href="{{url('')}}" style="font-size: 30px; letter-spacing: 0.5px;">{{ config('app.name', 'Instopay') }}</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -391,10 +392,10 @@
                     </ul>
                 </div>
                 <div class="copyright">
-                    <p>© Copyright 2021 {{$company_name}}.&nbsp; | &nbsp;Made with <i class="fa fa-heart"></i>
+                    <p>© Copyright 2021 {{ config('app.name', 'Instopay') }}.&nbsp; | &nbsp;Made with <i class="fa fa-heart"></i>
                         by
                         <a target="_blank" href="{{url('')}}">
-                            <strong>{{$company_name}}</strong>
+                            <strong>{{ config('app.name', 'Instopay') }}</strong>
                         </a>
                     </p>
                 </div>

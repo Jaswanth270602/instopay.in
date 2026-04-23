@@ -68,7 +68,7 @@
 
                     </div>
                     <div class="card-footer">
-                        <pre>POST: https://d2cpay.co/api/agent/add-money/v7/createOrder</pre>
+                        <pre>POST: https://instopay.in/api/agent/add-money/v7/createOrder</pre>
                         <hr>
                         <pre style="color: #0ba360;">Success Response : {
     "status": "success",
@@ -153,7 +153,7 @@ and the UPI link opens correctly in apps like GPay, PhonePe, Paytm, etc.
                         </table>
                     </div>
                     <div class="card-footer">
-                        <pre>POST: https://d2cpay.co/api/agent/add-money/v7/status-enquiry</pre>
+                        <pre>POST: https://instopay.in/api/agent/add-money/v7/status-enquiry</pre>
                         <hr>
                         <pre style="color: #0ba360;">Success Response : {
     "status": true,

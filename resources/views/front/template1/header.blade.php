@@ -5,12 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>{{ $company_name }}</title>
+    <title>{{ config('app.name', 'Instopay') }}</title>
     <!-- web fonts -->
     <link href="//fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
     <!-- //web fonts -->
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{url('front/css/style-freedom.css')}}">
+    <link rel="stylesheet" href="{{url('assets/css/dark-fintech-theme.css')}}">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -47,7 +48,7 @@
 <section class="bg-dark">
     <nav class="navbar navbar-expand-lg navbar-light py-lg-2 py-2">
         <div class="container">
-            <a class="navbar-brand" href="{{url('')}}"><img src="{{$cdnLink}}{{ $company_logo }}" style="height: 60px;"></a>
+            <a class="navbar-brand text-white font-weight-bold" href="{{url('')}}" style="font-size: 34px; letter-spacing: 0.5px;">Instopay</a>
             <!-- if logo is image enable this
             <a class="navbar-brand" href="#index.html">
                 <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
@@ -90,7 +91,7 @@
         <div class="container">
             <div class="d-grid grid-col-4 footer-top-29">
                 <div class="footer-list-29 footer-1">
-                    <h6 class="footer-title-29"><a href="{{url('')}}"><img src="{{$cdnLink}}{{ $company_logo }}" style="height: 60px;"></a></h6>
+                    <h6 class="footer-title-29"><a href="{{url('')}}" style="font-size: 28px; font-weight: 700; color: #ffffff; text-decoration: none;">Instopay</a></h6>
 
                    {{-- <div class="main-social-footer-29">
                         <a href="#facebook" class="facebook"><span class="fa fa-facebook"></span></a>
@@ -128,7 +129,7 @@
                 </div>
             </div>
             <div class="d-grid grid-col-2 bottom-copies">
-                <p class="copy-footer-29">© 2020 {{ $company_name }}. All rights reserved </p>
+                <p class="copy-footer-29">© 2020 {{ config('app.name', 'Instopay') }}. All rights reserved </p>
                 <ul class="list-btm-29">
                     @foreach(App\Models\Navigation::where('status_id', 1)->where('company_id', $company_id)->where('type',2)->get() as $value)
                     <li><a href="{{url('pages')}}/{{$company_id}}/{{ $value->navigation_slug}}">{{ $value->navigation_name }}</a></li>

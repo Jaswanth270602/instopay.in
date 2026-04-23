@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sign In - {{ $company_name }}</title>
+    <title>Sign In - {{ config('app.name', 'Instopay') }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Fonts and Bootstrap -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{url('assets/css/dark-fintech-theme.css')}}">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <style>
@@ -25,7 +26,7 @@
 
         .login-left {
             flex: 1;
-            background-color: #0d1b2a;
+            background: linear-gradient(180deg, #4C1D95, #7C3AED, #A855F7);
             color: white;
             padding: 60px;
             display: flex;
@@ -155,12 +156,15 @@
     </style>
 </head>
 <body>
+@php
+    $brandName = config('app.name', 'Instopay');
+@endphp
 
 <div class="login-wrapper">
     <!-- Left Info Panel -->
     <div class="login-left">
-        <img src="{{ $cdnLink}}{{ $company_logo }}" alt="MarsPay Logo" style="width: 250px; margin-bottom: 40px; margin-left:22%;">
-        <h1 style= margin-left:23%;font-size:20px;>WELCOME to {{ $company_name }}</h1>
+        <h1 style="margin-left:23%;font-size:36px;font-weight:700;letter-spacing:0.5px;">{{ $brandName }}</h1>
+        <h1 style="margin-left:23%;font-size:20px;">WELCOME to {{ $brandName }}</h1>
         <ul style= margin-left:20%;>
             <li>Fast & secure payment gateway</li>
             <li>Built for high-volume B2B merchants</li>

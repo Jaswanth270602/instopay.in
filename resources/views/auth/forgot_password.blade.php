@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
-    <title>{{ $company_name }}</title>
+    <title>{{ config('app.name', 'Instopay') }}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{url('assets/css/dark-fintech-theme.css')}}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
@@ -90,7 +91,7 @@
         {!! csrf_field() !!}
 
         <div class="logo-container text-center">
-            <img src="{{ $cdnLink}}{{ $company_logo }}" style="height: 60px;">
+            <h2 style="font-weight: 700; letter-spacing: 0.5px; margin: 0; color: #ffffff;">{{ config('app.name', 'Instopay') }}</h2>
         </div>
 
         <div class="alert alert-success" role="alert" id="successMessage" style="display: none;"></div>

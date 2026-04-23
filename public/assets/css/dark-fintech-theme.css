@@ -1,0 +1,327 @@
+:root {
+    --pg-primary: #A855F7;
+    --pg-secondary: #7C3AED;
+    --pg-accent: #C084FC;
+    --pg-grad-start: #4C1D95;
+    --pg-grad-end: #7C3AED;
+    --pg-grad-alt: #8B5CF6;
+
+    --pg-bg-main: #F4F7FF;
+    --pg-bg-card: #FFFFFF;
+    --pg-bg-surface: #EEF2FF;
+
+    --pg-text-primary: #0F172A;
+    --pg-text-secondary: #475569;
+    --pg-text-muted: #64748B;
+
+    --pg-success: #00E676;
+    --pg-warning: #FFB020;
+    --pg-error: #FF4D4F;
+
+    --pg-border: rgba(99, 102, 241, 0.22);
+    --pg-shadow: 0 10px 24px rgba(76, 29, 149, 0.12);
+}
+
+html, body {
+    background: var(--pg-bg-main) !important;
+    color: var(--pg-text-primary) !important;
+}
+
+a, .text-primary, .nav-link.active, .active > .nav-link {
+    color: var(--pg-accent) !important;
+}
+
+a:hover, a:focus {
+    color: var(--pg-primary) !important;
+}
+
+.main-header, .navbar, .bg-dark, .header-brand, .main-navbar, .osahan-menu, .top-header {
+    background: linear-gradient(90deg, var(--pg-grad-start), var(--pg-grad-end), var(--pg-grad-alt)) !important;
+    border-color: var(--pg-border) !important;
+}
+
+/* First/top header bar: bright purple only (no blue) */
+.main-header,
+.navbar,
+.top-header {
+    background: linear-gradient(90deg, #4C1D95, #7C3AED, #A855F7) !important;
+    background-color: #6D28D9 !important;
+    background-image: linear-gradient(90deg, #4C1D95, #7C3AED, #A855F7) !important;
+}
+
+/* Second strip/menu bar: dark purple */
+.main-navbar,
+.horizontal-main,
+.osahan-menu .navbar-nav,
+.main-header .main-navbar {
+    background: #2B145C !important;
+    background-color: #2B145C !important;
+    background-image: none !important;
+}
+
+/* Strong admin-specific overrides (top bar + second bar) */
+.main-header.nav.nav-item.hor-header,
+.main-header.nav.nav-item.hor-header .container,
+.main-header.nav.nav-item.hor-header .main-header-left,
+.main-header.nav.nav-item.hor-header .main-header-right {
+    background: linear-gradient(90deg, #4C1D95, #7C3AED, #A855F7) !important;
+    background-color: #6D28D9 !important;
+    background-image: linear-gradient(90deg, #4C1D95, #7C3AED, #A855F7) !important;
+}
+
+.sticky .horizontal-main.hor-menu.clearfix.side-header,
+.sticky .horizontal-main.hor-menu.clearfix.side-header .horizontal-mainwrapper,
+.sticky .horizontal-main.hor-menu.clearfix.side-header .horizontalMenu,
+.sticky .horizontal-main.hor-menu.clearfix.side-header .horizontalMenu-list {
+    background: #2B145C !important;
+    background-color: #2B145C !important;
+    background-image: none !important;
+}
+
+/* Top-right corner controls blend with header */
+.main-header-right,
+.main-header-right .nav,
+.main-header-right .nav-item,
+.main-header-right .nav-link {
+    background: transparent !important;
+}
+
+.main-header-right {
+    border-radius: 14px !important;
+    padding: 4px 8px !important;
+    margin-right: 4px !important;
+    box-shadow: none !important;
+}
+
+.main-header-right .main-profile-menu > a,
+.main-header-right .main-header-notification > a,
+.main-header-right .right-toggle .nav-link {
+    background: rgba(255, 255, 255, 0.12) !important;
+    border: 1px solid rgba(255, 255, 255, 0.24) !important;
+    border-radius: 999px !important;
+}
+
+.main-sidebar, .app-sidebar, .sidebar, .sidemenu-logo, .horizontal-main, .main-sidemenu {
+    background: var(--pg-bg-surface) !important;
+    border-right: 1px solid var(--pg-border) !important;
+}
+
+.card, .modal-content, .dropdown-menu, .main-content-body, .signup-form form, .login-box, .table, .alert {
+    background: var(--pg-bg-card) !important;
+    color: var(--pg-text-primary) !important;
+    border-color: var(--pg-border) !important;
+    box-shadow: var(--pg-shadow) !important;
+}
+
+.table thead th, .table th, .table td {
+    border-color: var(--pg-border) !important;
+    color: var(--pg-text-primary) !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd),
+.table-hover tbody tr:hover {
+    background: rgba(168, 85, 247, 0.08) !important;
+}
+
+.btn-primary, .btn-success, .btn-theme, .btn-theme-round, .btn-secondary.btn-theme {
+    background: linear-gradient(90deg, #9333EA, #C084FC) !important;
+    border-color: var(--pg-primary) !important;
+    color: #FFFFFF !important;
+}
+
+.btn-secondary, .btn-info {
+    background: linear-gradient(90deg, #7C3AED, #00C2FF) !important;
+    border-color: var(--pg-secondary) !important;
+    color: #FFFFFF !important;
+}
+
+.btn:hover, .btn:focus {
+    filter: brightness(1.12);
+    box-shadow: 0 0 0 0.2rem rgba(168, 85, 247, 0.32) !important;
+}
+
+.btn:active, .btn.active {
+    filter: brightness(0.94);
+}
+
+.form-control, .custom-select, input, textarea, select {
+    background: var(--pg-bg-surface) !important;
+    color: var(--pg-text-primary) !important;
+    border-color: var(--pg-border) !important;
+}
+
+.form-control:focus, input:focus, textarea:focus, select:focus {
+    border-color: var(--pg-primary) !important;
+    box-shadow: 0 0 0 0.2rem rgba(168, 85, 247, 0.22) !important;
+}
+
+.form-control::placeholder, ::placeholder {
+    color: var(--pg-text-muted) !important;
+}
+
+.badge, .badge-primary {
+    background: linear-gradient(90deg, #9333EA, #C084FC) !important;
+    color: #FFFFFF !important;
+}
+
+.badge-success, .alert-success, .text-success {
+    background-color: rgba(34, 197, 94, 0.16) !important;
+    color: var(--pg-success) !important;
+    border-color: rgba(34, 197, 94, 0.35) !important;
+}
+
+.badge-warning, .alert-warning, .text-warning {
+    background-color: rgba(245, 158, 11, 0.16) !important;
+    color: var(--pg-warning) !important;
+    border-color: rgba(245, 158, 11, 0.35) !important;
+}
+
+.badge-danger, .alert-danger, .text-danger, .alert-error {
+    background-color: rgba(239, 68, 68, 0.16) !important;
+    color: var(--pg-error) !important;
+    border-color: rgba(239, 68, 68, 0.35) !important;
+}
+
+.text-muted, small, .small {
+    color: var(--pg-text-muted) !important;
+}
+
+hr, .dropdown-divider, .border, .border-top, .border-bottom, .border-left, .border-right {
+    border-color: var(--pg-border) !important;
+}
+
+.main-footer, footer, .footer, .footer-29, .osahan-breadcrumb {
+    background: linear-gradient(90deg, #4C1D95, #7C3AED, #A855F7) !important;
+    color: #F8FAFC !important;
+    border-top: 1px solid var(--pg-border) !important;
+}
+
+.footer h1,
+.footer h2,
+.footer h3,
+.footer h4,
+.footer h5,
+.footer h6,
+.footer p,
+.footer span,
+.footer li,
+.footer-29 h1,
+.footer-29 h2,
+.footer-29 h3,
+.footer-29 h4,
+.footer-29 h5,
+.footer-29 h6,
+.footer-29 p,
+.footer-29 span,
+.footer-29 li {
+    color: #F8FAFC !important;
+}
+
+.footer a,
+.footer-29 a,
+.copy-footer-29,
+.footer-title-29 {
+    color: #EDE9FE !important;
+}
+
+.footer a:hover,
+.footer-29 a:hover {
+    color: #FFFFFF !important;
+}
+
+/* Remove gradients and keep solid bright accents */
+.brand-gradient {
+    background: linear-gradient(90deg, #A855F7, #C084FC) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+}
+
+.btn-signin {
+    background: linear-gradient(90deg, #9333EA, #C084FC) !important;
+    border-color: var(--pg-primary) !important;
+    color: #FFFFFF !important;
+}
+
+.btn-signin:hover,
+.btn-signin:focus {
+    background: linear-gradient(90deg, #7E22CE, #00C2FF) !important;
+    border-color: #7E22CE !important;
+    color: #FFFFFF !important;
+}
+
+/* Chart color alignment */
+.apexcharts-tooltip,
+.apexcharts-xaxistooltip,
+.apexcharts-yaxistooltip {
+    background: var(--pg-bg-card) !important;
+    border-color: var(--pg-border) !important;
+    color: var(--pg-text-primary) !important;
+}
+
+.apexcharts-gridline {
+    stroke: rgba(156, 163, 175, 0.2) !important;
+}
+
+.apexcharts-series path,
+.apexcharts-bar-series path,
+.apexcharts-line-series path {
+    stroke: #A855F7 !important;
+}
+
+.apexcharts-area-series path {
+    fill: rgba(168, 85, 247, 0.24) !important;
+}
+
+/* Keep menu/header text readable on purple bar */
+.main-header .nav-link,
+.navbar .nav-link,
+.main-header a,
+.navbar a,
+.header-brand {
+    color: #F8FAFC !important;
+}
+
+/* Super admin/profile dropdown readability */
+.main-profile-menu .dropdown-menu,
+.main-header-notification .dropdown-menu,
+.dropdown-menu.dropdown-menu-lg {
+    background: #FFFFFF !important;
+    color: #1F2937 !important;
+}
+
+.main-profile-menu .dropdown-menu .dropdown-item,
+.main-header-notification .dropdown-menu .dropdown-item,
+.dropdown-menu.dropdown-menu-lg .dropdown-item {
+    color: #1F2937 !important;
+}
+
+.main-profile-menu .dropdown-menu .dropdown-item:hover,
+.main-header-notification .dropdown-menu .dropdown-item:hover,
+.dropdown-menu.dropdown-menu-lg .dropdown-item:hover {
+    background: #F3E8FF !important;
+    color: #4C1D95 !important;
+}
+
+.main-profile-menu .dropdown-menu .main-header-profile,
+.main-header-notification .dropdown-menu .menu-header-content {
+    background: linear-gradient(90deg, #4C1D95, #7C3AED, #A855F7) !important;
+}
+
+.main-profile-menu .dropdown-menu .main-header-profile h6,
+.main-profile-menu .dropdown-menu .main-header-profile span,
+.main-header-notification .dropdown-menu .menu-header-content h6,
+.main-header-notification .dropdown-menu .menu-header-content p {
+    color: #FFFFFF !important;
+}
+
+/* Dashboard top metric cards */
+.main-content-body .row.row-sm > .col-xl-3 .card {
+    background: linear-gradient(180deg, #F5EEFF, #FFFFFF) !important;
+    border: 1px solid #E9D5FF !important;
+}
+
+.main-content-body .row.row-sm > .col-xl-3 .card .text-primary,
+.main-content-body .row.row-sm > .col-xl-3 .card .text-primary-shadow {
+    color: #A855F7 !important;
+}
