@@ -73,18 +73,19 @@
         body {
             margin: 0;
             font-family: 'Inter', sans-serif;
-            background-color: #f5f7fa;
+            background: linear-gradient(180deg, #f3efff 0%, #ffffff 100%);
         }
 
         .signup-container {
             display: flex;
             min-height: 100vh;
+            align-items: stretch;
         }
 
         .left-section {
-            background-color: #0e1b4d;
+            background: linear-gradient(145deg, #4c1d95 0%, #6d28d9 50%, #7c3aed 100%);
             color: #fff;
-            padding: 50px;
+            padding: 60px 48px;
             width: 50%;
             display: flex;
             flex-direction: column;
@@ -112,7 +113,7 @@
         .left-section ul li::before {
             content: '✔';
             font-family: 'Font Awesome 5 Free';
-            color: #dd6808ff;
+            color: #ddd6fe;
             font-weight: bold;
             font-size: 10px;
             border-radius: 50%;
@@ -122,22 +123,29 @@
         }
 
         .right-section {
-            background-color: #ffffff;
-            width: 60%;
+            background: #f8f5ff;
+            width: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 40px 0;
+            padding: 16px 20px;
         }
 
         .signup-form {
-            width: 55%;
-            max-width: 500px;
+            width: 100%;
+            max-width: 430px;
+            background: #ffffff;
+            border: 1px solid #e9ddff;
+            border-radius: 16px;
+            box-shadow: 0 20px 36px rgba(76, 29, 149, 0.12);
+            padding: 16px 18px 14px;
+            max-height: calc(100vh - 34px);
+            overflow-y: auto;
         }
 
         .form-header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .form-header i {
@@ -154,9 +162,22 @@
 
         .form-group input {
             font-size: 14px;
-            padding: 10px 12px;
+            height: 40px;
+            padding: 8px 12px;
             border-radius: 8px;
-            border: 1px solid #dcdcdc;
+            border: 1px solid #d8ccff;
+            background: #f2efff;
+            color: #1f2937;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group input:focus {
+            border-color: #7c3aed;
+            box-shadow: 0 0 0 0.2rem rgba(124, 58, 237, 0.18);
+            background: #ffffff;
         }
 
         .form-group input::placeholder {
@@ -164,36 +185,72 @@
         }
 
         .signup-btn {
-            background-color: #7f56d9;
+            background: linear-gradient(120deg, #5b21b6, #7c3aed, #a78bfa);
             color: #fff;
-            padding: 10px;
+            padding: 9px;
             border-radius: 8px;
             font-size: 14px;
             border: none;
             width: 30%;
-            margin-top: 10px;
+            margin-top: 4px;
             margin-left: 35%;
+            font-weight: 600;
+            box-shadow: 0 12px 20px rgba(124, 58, 237, 0.28);
         }
 
         .signup-btn:hover {
-            background-color: #6b45c6;
+            background: linear-gradient(120deg, #4c1d95, #6d28d9, #8b5cf6);
         }
 
         .login-link {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 10px;
             font-size: 14px;
-            margin-left:10%;
+            margin-left: 0;
         }
 
         .login-link a {
-            color: #7f56d9;
+            color: #6d28d9;
             font-weight: 500;
             text-decoration: none;
         }
 
         .login-link a:hover {
             text-decoration: underline;
+        }
+
+        @media (max-width: 991px) {
+            .signup-container {
+                flex-direction: column;
+            }
+
+            .left-section,
+            .right-section {
+                width: 100%;
+            }
+
+            .left-section {
+                padding: 34px 22px;
+            }
+
+            .left-section h2,
+            .left-section ul {
+                margin-left: 0 !important;
+            }
+
+            .right-section {
+                padding: 24px 14px 34px;
+            }
+
+            .signup-form {
+                max-width: 100%;
+                padding: 22px 16px 18px;
+            }
+
+            .signup-btn {
+                width: 100%;
+                margin-left: 0;
+            }
         }
     </style>
 </head>
@@ -261,8 +318,7 @@
     <input type="hidden" class="form-control" id="referral_code" placeholder="Referral Code"
         value="{{ $referral_code }}" @if($referral_code) disabled @endif>
 
-    <button type="button" id="registerBtn" onclick="sign_up()"
-        style="background-color: #b149b1ff; color: white; width: 30%; padding: 10px 16px; border: none; border-radius: 8px; font-size: 14px; margin-left:40%;">
+    <button type="button" id="registerBtn" onclick="sign_up()" class="signup-btn">
        sign up
     </button>
       <button class="btn btn-success btn-lg btn-block" type="button" id="registerBtn_loader" disabled

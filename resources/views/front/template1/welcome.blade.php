@@ -1,405 +1,834 @@
 @extends('front.template1.header')
 @section('content')
-
-
-
-    <!--<section class="form-12" id="home">-->
-    <!--    <div class="">-->
-    <!--        <div class="">-->
-    <!--            <div class="grid">-->
-    <!--                <div class="column2">-->
-    <!--                </div>-->
-
-    <!--                <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">-->
-    <!--                    <div class="carousel-inner">-->
-    <!--                        @foreach($frontbanner as $key => $banner)-->
-    <!--                            <div class="carousel-item {{ $key == 0 ? ' active' : '' }}">-->
-    <!--                                <img class="d-block w-100" src="{{$banner->banners}}" alt="Slider Banner">-->
-    <!--                            </div>-->
-    <!--                        @endforeach-->
-    <!--                    </div>-->
-    <!--                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">-->
-    <!--                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>-->
-    <!--                        <span class="sr-only">Previous</span>-->
-    <!--                    </a>-->
-    <!--                    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">-->
-    <!--                        <span class="carousel-control-next-icon" aria-hidden="true"></span>-->
-    <!--                        <span class="sr-only">Next</span>-->
-    <!--                    </a>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
-    <!--</section>-->
-
-    <!-- content-with-photo4 block -->
-    <!--<section class="w3l-content-with-photo-4">-->
-    <!--    <div id="content-with-photo4-block" class="pt-5">-->
-    <!--        <div class="container py-md-5">-->
-    <!--            <div class="cwp4-two row">-->
-    <!--            <div class="row align-items-center">-->
-    <!--                <div class="cwp4-image col-lg-6 pr-lg-5 mb-lg-0 mb-5">-->
-    <!--                    <img src="{{ url('front/images/d2c-about-img.png') }}" class="img-fluid" alt="" />-->
-    <!--                </div>-->
-    <!--                <div class="cwp4-text col-lg-6">-->
-    <!--                    <h3>{{ $company_name }} — Simplifying Digital Payments</h3>-->
-    <!--                    <p>-->
-    <!--                        {{ $company_name }} provides a secure and scalable payment gateway built for B2B merchants, enabling fast and reliable online transactions.-->
-    <!--                    </p>-->
-    <!--                    <p>-->
-    <!--                        Accept UPI, cards, net banking, and wallets with real-time processing and easy API integration for websites and apps.-->
-    <!--                    </p>-->
-    <!--                    <p>-->
-    <!--                        With instant onboarding, PCI-DSS compliance, and 24/7 support, {{ $company_name }} is your trusted digital payment partner across India.-->
-    <!--                    </p>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
-    <!--</section>-->
-    <!-- content-with-photo4 block -->
-    <!---728x90--->
-
-    <!-- specifications -->
-    <!--<section class="w3l-specifications-9">-->
-    <!--    <div class="main-w3 pb-5" id="stats">-->
-    <!--        <div class="container py-md-5 mt-4">-->
-    <!--            <div class="main-cont-wthree-fea row">-->
-    <!--                <div class="grids-speci1 col-lg-3 col-6">-->
-    <!--                    <div class="spec-2">-->
-    <!--                        <span class="fa fa-heart text-dark"></span>-->
-    <!--                        <h3 class="title-spe">40450</h3>-->
-    <!--                        <p>Our Clients</p>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--                <div class="grids-speci1 midd-eff-spe col-lg-3 col-6">-->
-    <!--                    <div class="spec-2">-->
-    <!--                        <span class="fa fa-thumbs-up text-dark"></span>-->
-    <!--                        <h3 class="title-spe">13500</h3>-->
-    <!--                        <p>Packages Delivered</p>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--                <div class="grids-speci1 las-but col-lg-3 col-6  mt-lg-0 mt-4">-->
-    <!--                    <div class="spec-2">-->
-    <!--                        <span class="fa fa-address-card-o text-dark"></span>-->
-    <!--                        <h3 class="title-spe">1500</h3>-->
-    <!--                        <p>Repeat Customers</p>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--                <div class="grids-speci1 las-t col-lg-3 col-6  mt-lg-0 mt-4">-->
-    <!--                    <div class="spec-2">-->
-    <!--                        <span class="fa fa-cog text-dark"></span>-->
-    <!--                        <h3 class="title-spe">2000 </h3>-->
-    <!--                        <p>Commercial Goods</p>-->
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </div>-->
-
-    <!--        </div>-->
-    <!--    </div>-->
-        <!-- //specifications -->
-    <!--</section>-->
-
-    <!-- skills-1 block -->
-    <!--<section class="w3l-skills-1" id="features" style="display:none;">-->
-    <!--    <div id="skills-1-block" class="py-5 bg bg2" data-selector=".bg.bg2">-->
-    <!--        <div class="container py-md-5">-->
-    <!--            <div class="team-1 row">-->
-    <!--                <div class="right-single-team col-lg-6">-->
-    <!--                    <h6>Here are a few places to explore shipping.</h6>-->
-    <!--                    <h3 class="mb-4">Are You a Sender?</h3>-->
-    <!--                    <li><span class="fa fa-check"></span> Core freight</li>-->
-    <!--                    <li><span class="fa fa-check"></span> Integrated logistics – LLP</li>-->
-    <!--                    <li><span class="fa fa-check"></span> Strategic-Xpert</li>-->
-    <!--                    <li><span class="fa fa-check"></span> One time solutions</li>-->
-    <!--                    <li><span class="fa fa-check"></span> Geo-Gateways</li>-->
-    <!--                </div>-->
-    <!--                <div class="left-single-team  col-lg-6">-->
-    <!--                    <h6>Things need to know about shipping.</h6>-->
-    <!--                    <h3 class="mb-4">Are You a Shipper?</h3>-->
-    <!--                    <li><span class="fa fa-check"></span> Customs & Tax Representation</li>-->
-    <!--                    <li><span class="fa fa-check"></span> Reusable Packaging</li>-->
-    <!--                    <li><span class="fa fa-check"></span> Warehousing</li>-->
-    <!--                    <li><span class="fa fa-check"></span> Finished Vehicle Logistics</li>-->
-    <!--                    <li><span class="fa fa-check"></span> Control Tower</li>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
-    <!--</section>-->
-    <!-- Teams14 block -->
-    <!---728x90--->
-
-    <!--<section class="w3l-feature-2">-->
-    <!--    <div class="grid top-bottom py-5">-->
-    <!--        <div class="container py-md-5">-->
-    <!--            <div class="heading text-center mx-auto">-->
-    <!--                <h3 class="head">Our Services</h3>-->
-    <!--                <p class="my-3 head">-->
-    <!--                    We provide all online services like bill payments-->
-    <!--                </p>-->
-    <!--            </div>-->
-    <!--            <div class="middle-section row mt-5 pt-3">-->
-    <!--             {{--   <div class="three-grids-columns col-lg-4 col-sm-6 ">-->
-    <!--                    <div class="icon"> <span class="fa fa-mobile" aria-hidden="true"></span></div>-->
-    <!--                    <h4>Recharges</h4>-->
-    <!--                    <p>Fast and secure way to recharge any mobile, any operator instantly through website, mobile app Quick Recharge all mobile operator.</p>-->
-    <!--                    <a href="#" class="red mt-3">Read More <span class="fa fa-angle-right pl-1"></span></a>-->
-    <!--                </div>--}}-->
-    <!--           {{--     <div class="three-grids-columns col-lg-4 col-sm-6 mt-sm-0 mt-5">-->
-    <!--                    <div class="icon"> <span class="fa fa-lightbulb-o" aria-hidden="true"></span></div>-->
-    <!--                    <h4>Bill Payment</h4>-->
-    <!--                    <p>Pay Gas Bill, Postpaid Bill, Water Bill and Electricity bills in a seconds using our plartform and avoid late payment charges.</p>-->
-    <!--                    <a href="#" class="red mt-3">Read More <span class="fa fa-angle-right pl-1"></span></a>-->
-    <!--                </div>-->
-    <!--                <div class="three-grids-columns col-lg-4 col-sm-6 mt-lg-0 mt-5">-->
-    <!--                    <div class="icon"> <span class="fa fa-id-card" aria-hidden="true"></span></div>-->
-    <!--                    <h4>Pan Card</h4>-->
-    <!--                    <p>Our UTI Pan Service direct from UTIITSL & also we provide NSDL Pan Service through NSDL software. Pan allote within 3-5 days.</p>-->
-    <!--                    <a href="#" class="red mt-3">Read More <span class="fa fa-angle-right pl-1"></span></a>-->
-    <!--                </div>--}}-->
-    <!--            </div>-->
-    <!--           {{-- <div class="middle-section row mt-5 pt-3">-->
-    <!--                <div class="three-grids-columns col-lg-4 col-sm-6 ">-->
-    <!--                    <div class="icon"> <span class="fa fa-money" aria-hidden="true"></span></div>-->
-    <!--                    <h4>Money Transfer</h4>-->
-    <!--                    <p>Transfer money to more than 200 banks in India. Instant and easy DMR service allows you to transfer money to any bank account in India.</p>-->
-    <!--                    <a href="#" class="red mt-3">Read More <span class="fa fa-angle-right pl-1"></span></a>-->
-    <!--                </div>-->
-    <!--                <div class="three-grids-columns col-lg-4 col-sm-6 mt-sm-0 mt-5">-->
-    <!--                    <div class="icon"> <span class="fa fa-university" aria-hidden="true"></span></div>-->
-    <!--                    <h4>AEPS</h4>-->
-    <!--                    <p>Aadhar Enabled Payment System is safe and secure banking system. Balace Inquiry, Cash Withdrawal, Mini Statement Available in AEPS.</p>-->
-    <!--                    <a href="#" class="red mt-3">Read More <span class="fa fa-angle-right pl-1"></span></a>-->
-    <!--                </div>-->
-    <!--                <div class="three-grids-columns col-lg-4 col-sm-6 mt-lg-0 mt-5">-->
-    <!--                    <div class="icon"> <span class="fa fa-calculator" aria-hidden="true"></span></div>-->
-    <!--                    <h4>Micro ATM</h4>-->
-    <!--                    <p>Accept Payments or Withdraw on Your Smartphone/Tablet through our mATM Solutions. Credit/Debit Card Accepted, Real-Time Settlement.</p>-->
-    <!--                    <a href="#" class="red mt-3">Read More <span class="fa fa-angle-right pl-1"></span></a>-->
-    <!--                </div>-->
-    <!--            </div>--}}-->
-    <!--        </div>-->
-    <!--    </div>-->
-    <!--</section>-->
-
-    <!--customers-7-->
-    <!--<section class="w3l-customers-8" id="testimonials">-->
-    <!--    <div class="customers_sur py-5">-->
-    <!--        <div class="container py-md-5">-->
-    <!--            <div class="heading text-center mx-auto">-->
-    <!--                <h3 class="head text-white">Words From Our Clients</h3>-->
-    <!--                <p class="my-3 head text-white">-->
-                        <!--                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;-->
-                        <!--                    Nulla mollis dapibus nunc, ut rhoncus-->
-                        <!--                    turpis sodales quis. Integer sit amet mattis quam.-->
-    <!--                </p>-->
-    <!--            </div>-->
-    <!--            <div class="customers-top_sur row mt-5 pt-3">-->
-    <!--                <div class="customers-left_sur col-md-6">-->
-    <!--                    <div class="customers_grid">-->
-
-    <!--                        <p class="sub-test"><span class="fa fa-quote-left"></span>-->
-    <!--                            I have never seen such a great quality. Good luck and keep it up! Thanks for their support which helps us to grow our business.-->
-    <!--                        </p>-->
-
-    <!--                    </div>-->
-    <!--                    <div class="customers-bottom_sur row">-->
-    <!--                        <div class="custo-img-res col-2">-->
-                                <!-- <img src="images/te2.jpg" alt=" " class="img-responsive"> -->
-    <!--                        </div>-->
-    <!--                        {{--<div class="custo_grid col-10">-->
-    <!--                            <h5 class="text-white">Drx Laxman Singh Sonigara</h5>-->
-    <!--                            <span>Client</span>-->
-    <!--                        </div>--}}-->
-
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--                <div class="customers-middle_sur col-md-6 mt-md-0 mt-4">-->
-    <!--                    <div class="customers_grid">-->
-
-    <!--                        <p class="sub-test"><span class="fa fa-quote-left"></span>-->
-    <!--                            Their quality services lead us to achieve new grwoth in market.Thanks to webtech solution.net for their outstanding support and services.-->
-    <!--                        </p>-->
-
-    <!--                    </div>-->
-    <!--                    <div class="customers-bottom_sur row">-->
-    <!--                        <div class="custo-img-res col-2">-->
-                                <!-- <img src="images/te1.jpg" alt=" " class="img-responsive"> -->
-    <!--                        </div>-->
-    <!--                        {{--<div class="custo_grid col-10">-->
-    <!--                            <h5 class="text-white">Lokesh Agarwal</h5>-->
-    <!--                            <span>Client</span>-->
-    <!--                        </div>--}}-->
-
-    <!--                    </div>-->
-    <!--                </div>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
-    <!--</section>-->
-    <!--//customers-7-->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Instopay | Smart Payment Platform</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-  <style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<style>
     :root {
-      --pg-primary: #A855F7;
-      --pg-secondary: #7C3AED;
-      --pg-accent: #C084FC;
-      --pg-bg-main: #F4F7FF;
-      --pg-bg-card: #FFFFFF;
-      --pg-bg-surface: #EEF2FF;
-      --pg-text-primary: #0F172A;
-      --pg-text-secondary: #475569;
-      --pg-text-muted: #64748B;
+        --purple-deep: #4c1d95;
+        --purple-violet: #7c3aed;
+        --purple-soft: #a78bfa;
+        --ink: #0f172a;
+        --muted: #334155;
+        --paper: #f8fafc;
+        --white: #ffffff;
     }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
     body {
-      background-color: var(--pg-bg-main);
-      font-family: 'Poppins', sans-serif;
-      color: var(--pg-text-primary);
+        font-family: "Inter", sans-serif;
+        color: var(--ink);
+        background: linear-gradient(180deg, #f8f7ff 0%, #ffffff 35%, #f4f1ff 100%);
+        overflow-x: hidden;
     }
-    .brand-gradient {
-      background: linear-gradient(to right, var(--pg-primary), var(--pg-accent));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .btn-primary {
-      background: linear-gradient(90deg, #9333EA, #C084FC);
-      color: #fff;
-    }
-    .btn-primary:hover {
-      background: linear-gradient(90deg, #7E22CE, #00C2FF);
-    }
-    .section-bg {
-      background-color: var(--pg-bg-surface);
-    }
-    .text-gray-900 {
-      color: var(--pg-text-primary) !important;
-    }
-    .text-gray-700 {
-      color: var(--pg-text-secondary) !important;
-    }
-    .text-gray-600 {
-      color: var(--pg-text-muted) !important;
-    }
-    .bg-white {
-      background-color: var(--pg-bg-card) !important;
-      border: 1px solid rgba(156, 163, 175, 0.2);
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35) !important;
-    }
-  </style>
-</head>
-<body>
 
-  <!-- Hero Section -->
-  <section class="text-gray-900 py-24 px-8" data-aos="fade-up">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
-      <div class="mb-10 md:mb-0 md:w-1/2">
-        <h1 class="text-5xl font-bold mb-6 brand-gradient">Empower Your Digital Transactions</h1>
-        <p class="text-lg mb-6 text-gray-700">With Instopay, enjoy smart, swift, and secure financial services built for the future.</p>
-        <a href="#" class="btn-primary px-6 py-3 rounded-lg shadow-lg">Start Now</a>
-      </div>
-      <div class="md:w-1/2" data-aos="zoom-in">
-        <img src="assets/img/ecommerce/d2c-hero-image.jpg" alt="Payment Animation" class="w-full"  style="border-radius:10px;" />
-      </div>
-    </div>
-  </section>
+    /* Hide legacy template chrome for this redesigned landing page */
+    .bg-dark,
+    .w3l-footer-29-main {
+        display: none !important;
+    }
 
-  <!-- Services Overview -->
-  <section class="section-bg py-20 px-8 text-gray-900" data-aos="fade-up">
-    <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-3xl font-bold brand-gradient mb-12">Our Core Features</h2>
-      <div class="grid md:grid-cols-3 gap-10">
-        <div class="p-6 rounded-lg bg-white shadow hover:shadow-xl">
-          <i class="fas fa-shield-alt text-3xl text-blue-500 mb-4"></i>
-          <h3 class="text-xl font-semibold mb-2">Secure API Integration</h3>
-          <p class="text-gray-600">Plug-and-play secure APIs for developers to build on top of our infrastructure.</p>
+    .wrap {
+        width: min(1180px, 92vw);
+        margin: 0 auto;
+    }
+
+    .purple-gradient {
+        background: linear-gradient(135deg, var(--purple-deep), var(--purple-violet), var(--purple-soft));
+    }
+
+    .text-gradient {
+        background: linear-gradient(120deg, var(--purple-deep), var(--purple-violet), var(--purple-soft));
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    .section-gap {
+        padding: 90px 0;
+    }
+
+    .glass-nav {
+        position: sticky;
+        top: 16px;
+        z-index: 120;
+        margin: 18px auto;
+        border-radius: 20px;
+        background: rgba(92, 34, 183, 0.82);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.28);
+        box-shadow: 0 20px 40px rgba(76, 29, 149, 0.22);
+    }
+
+    .nav-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 24px;
+    }
+
+    .brand {
+        color: #ffffff;
+        font-weight: 800;
+        letter-spacing: 0.3px;
+        text-decoration: none;
+        font-size: 1.15rem;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 28px;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .nav-links a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 700;
+        position: relative;
+        padding-bottom: 5px;
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 100%;
+        height: 2px;
+        background: #fff;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.35s ease;
+    }
+
+    .nav-links a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .nav-auth {
+        border-radius: 10px;
+        padding: 9px 14px;
+        text-decoration: none;
+        color: #ffffff;
+        font-weight: 700;
+        border: 1px solid rgba(255, 255, 255, 0.38);
+        background: rgba(255, 255, 255, 0.12);
+        transition: all 0.22s ease;
+    }
+
+    .nav-auth:hover {
+        background: rgba(255, 255, 255, 0.22);
+        color: #ffffff;
+    }
+
+    .nav-cta {
+        border: 0;
+        border-radius: 999px;
+        padding: 10px 18px;
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+        background: linear-gradient(120deg, #5b21b6, #7c3aed, #a78bfa);
+        box-shadow: 0 0 0 rgba(167, 139, 250, 0.4);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .nav-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 12px 26px rgba(167, 139, 250, 0.58);
+    }
+
+    .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 48px 0 88px;
+    }
+
+    .hero::before,
+    .hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(70px);
+        opacity: 0.4;
+        z-index: 0;
+        animation: glowShift 12s ease-in-out infinite alternate;
+    }
+
+    .hero::before {
+        width: 360px;
+        height: 360px;
+        background: #7c3aed;
+        top: -80px;
+        left: -120px;
+    }
+
+    .hero::after {
+        width: 400px;
+        height: 400px;
+        background: #a78bfa;
+        bottom: -160px;
+        right: -80px;
+    }
+
+    @keyframes glowShift {
+        0% { transform: translate(0, 0) scale(1); }
+        100% { transform: translate(25px, -20px) scale(1.08); }
+    }
+
+    .hero-grid {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        gap: 36px;
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: center;
+    }
+
+    .hero h1 {
+        font-size: clamp(2rem, 4.5vw, 3.6rem);
+        line-height: 1.08;
+        font-weight: 800;
+        margin-bottom: 18px;
+    }
+
+    .hero p {
+        color: var(--muted);
+        font-size: 1.1rem;
+        font-weight: 500;
+        margin-bottom: 30px;
+        max-width: 620px;
+    }
+
+    .feature-card p,
+    .timeline-item p,
+    .testi-card p,
+    .stats p,
+    .cta-block p {
+        color: #334155 !important;
+    }
+
+    .btn-row {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+    }
+
+    .btn-main,
+    .btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 12px 24px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.25s ease;
+    }
+
+    .btn-main {
+        color: #fff;
+        background: linear-gradient(120deg, var(--purple-deep), var(--purple-violet), var(--purple-soft));
+        box-shadow: 0 14px 26px rgba(124, 58, 237, 0.36);
+    }
+
+    .btn-main:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 18px 35px rgba(124, 58, 237, 0.45);
+    }
+
+    .btn-ghost {
+        color: var(--purple-violet);
+        border: 1px solid rgba(124, 58, 237, 0.45);
+        background: rgba(255, 255, 255, 0.7);
+    }
+
+    .btn-ghost:hover {
+        border-color: var(--purple-violet);
+        background: rgba(124, 58, 237, 0.08);
+    }
+
+    .float-stack {
+        position: relative;
+        height: 460px;
+    }
+
+    .float-card {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(167, 139, 250, 0.34);
+        backdrop-filter: blur(12px);
+        border-radius: 20px;
+        box-shadow: 0 20px 45px rgba(30, 41, 59, 0.15);
+        padding: 18px 20px;
+    }
+
+    .float-success { top: 18px; left: 5%; width: 260px; animation: floaty 5s ease-in-out infinite; }
+    .float-graph { top: 155px; right: 0; width: 290px; animation: floaty 6s ease-in-out infinite; }
+    .float-wallet { bottom: 0; left: 18%; width: 280px; animation: floaty 5.5s ease-in-out infinite; }
+
+    @keyframes floaty {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-12px); }
+    }
+
+    .chip {
+        display: inline-flex;
+        gap: 8px;
+        align-items: center;
+        color: #fff;
+        border-radius: 999px;
+        padding: 6px 12px;
+        font-size: 0.78rem;
+        font-weight: 600;
+    }
+
+    .chip.green { background: linear-gradient(90deg, #16a34a, #22c55e); }
+    .chip.purple { background: linear-gradient(90deg, #6d28d9, #8b5cf6); }
+
+    .mini-graph {
+        margin-top: 14px;
+        display: grid;
+        grid-template-columns: repeat(9, 1fr);
+        align-items: end;
+        gap: 7px;
+        height: 80px;
+    }
+
+    .mini-graph span {
+        border-radius: 8px 8px 0 0;
+        background: linear-gradient(180deg, #a78bfa, #6d28d9);
+    }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 24px;
+    }
+
+    .feature-card {
+        position: relative;
+        border-radius: 20px;
+        background: linear-gradient(#fff, #fff) padding-box,
+            linear-gradient(130deg, rgba(76, 29, 149, 0.85), rgba(124, 58, 237, 0.7), rgba(167, 139, 250, 0.8)) border-box;
+        border: 1.5px solid transparent;
+        box-shadow: 0 16px 30px rgba(15, 23, 42, 0.1);
+        padding: 24px;
+        transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 24px 34px rgba(76, 29, 149, 0.2);
+    }
+
+    .icon-glow {
+        width: 50px;
+        height: 50px;
+        border-radius: 14px;
+        display: grid;
+        place-items: center;
+        margin-bottom: 14px;
+        color: #fff;
+        font-size: 1rem;
+        background: linear-gradient(120deg, #5b21b6, #7c3aed, #a78bfa);
+        box-shadow: 0 12px 24px rgba(124, 58, 237, 0.38);
+    }
+
+    .how-it-works {
+        background: linear-gradient(170deg, #ffffff 0%, #f2ecff 100%);
+        border-radius: 26px;
+        border: 1px solid rgba(124, 58, 237, 0.15);
+        padding: 38px 26px;
+    }
+
+    .timeline {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+        margin-top: 24px;
+    }
+
+    .timeline::before {
+        content: "";
+        position: absolute;
+        top: 31px;
+        left: 8%;
+        right: 8%;
+        height: 2px;
+        background: linear-gradient(90deg, #4c1d95, #7c3aed, #a78bfa);
+        z-index: 0;
+    }
+
+    .timeline-item {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        padding: 14px;
+        border-radius: 16px;
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(124, 58, 237, 0.18);
+    }
+
+    .timeline-dot {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto 12px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: #fff;
+        font-size: 1.15rem;
+        background: linear-gradient(120deg, #4c1d95, #7c3aed, #a78bfa);
+        box-shadow: 0 14px 24px rgba(124, 58, 237, 0.35);
+    }
+
+    .stats {
+        margin-top: 40px;
+        background: linear-gradient(130deg, #1f1147, #3b1476, #4c1d95);
+        border-radius: 26px;
+        color: #fff;
+        padding: 38px 26px;
+    }
+
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-top: 16px;
+    }
+
+    .stat-card {
+        border-radius: 16px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        text-align: center;
+    }
+
+    .counter {
+        font-size: clamp(1.8rem, 3.4vw, 2.4rem);
+        font-weight: 800;
+        color: #ddd6fe;
+    }
+
+    .testi-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 22px;
+    }
+
+    .testi-card {
+        border-radius: 18px;
+        border: 1px solid rgba(124, 58, 237, 0.2);
+        background: #fff;
+        padding: 22px;
+        box-shadow: 0 12px 22px rgba(15, 23, 42, 0.1);
+        transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .testi-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 0 0 1px rgba(167, 139, 250, 0.18), 0 18px 28px rgba(124, 58, 237, 0.24);
+    }
+
+    .identity {
+        margin-top: 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .avatar {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        color: #fff;
+        background: linear-gradient(130deg, #5b21b6, #8b5cf6);
+    }
+
+    .cta-block {
+        border-radius: 26px;
+        padding: 50px 28px;
+        color: #fff;
+        text-align: center;
+        background: linear-gradient(135deg, #4c1d95 0%, #7c3aed 45%, #a78bfa 100%);
+        box-shadow: 0 25px 36px rgba(76, 29, 149, 0.35);
+    }
+
+    .cta-form {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+
+    .cta-form input {
+        min-width: min(360px, 90vw);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        background: rgba(255, 255, 255, 0.13);
+        color: #fff;
+        border-radius: 999px;
+        padding: 12px 16px;
+        outline: 0;
+    }
+
+    .cta-form input::placeholder {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .cta-form button {
+        border: 0;
+        border-radius: 999px;
+        padding: 12px 20px;
+        font-weight: 700;
+        color: #fff;
+        background: linear-gradient(120deg, #5b21b6, #7c3aed, #c4b5fd);
+        box-shadow: 0 14px 24px rgba(167, 139, 250, 0.45);
+        transition: transform 0.25s ease;
+    }
+
+    .cta-form button:hover {
+        transform: translateY(-2px);
+    }
+
+    .site-footer {
+        margin-top: 90px;
+        padding: 60px 0 28px;
+        background: linear-gradient(140deg, #09080f, #190d36, #2a1059);
+        color: #d4d4d8;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 1.2fr repeat(3, 1fr);
+        gap: 28px;
+    }
+
+    .footer-title {
+        color: #fff;
+        margin-bottom: 12px;
+        font-weight: 700;
+    }
+
+    .footer-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .footer-links li {
+        margin-bottom: 10px;
+    }
+
+    .footer-links a {
+        color: #cbd5e1;
+        text-decoration: none;
+        transition: color 0.2s ease, transform 0.2s ease;
+        display: inline-block;
+    }
+
+    .footer-links a:hover {
+        color: #ddd6fe;
+        transform: translateX(4px);
+    }
+
+    .reveal {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (max-width: 992px) {
+        .hero-grid,
+        .features-grid,
+        .stats-grid,
+        .testi-grid,
+        .footer-grid,
+        .timeline {
+            grid-template-columns: 1fr;
+        }
+
+        .timeline::before {
+            display: none;
+        }
+
+        .float-stack {
+            height: auto;
+            display: grid;
+            gap: 14px;
+        }
+
+        .float-card {
+            position: relative;
+            width: 100%;
+            left: auto;
+            right: auto;
+            top: auto;
+            bottom: auto;
+            animation: none;
+        }
+
+        .nav-links {
+            display: none;
+        }
+    }
+</style>
+
+<nav class="glass-nav wrap">
+    <div class="nav-content">
+        <a href="#home" class="brand">Instopay</a>
+        <ul class="nav-links">
+            <li><a href="{{ url('') }}">Home</a></li>
+            <li><a href="{{ url('pages') }}/{{ $company_id }}/about-us">About Us</a></li>
+            <li><a href="{{ url('contact-us') }}">Contact</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#stats">Stats</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="{{ url('login') }}" class="nav-auth">Login</a>
+            @if(isset($registration_status) && $registration_status == 1)
+                <a href="{{ url('sign-up') }}" class="nav-auth">Register</a>
+            @endif
+            <a href="#cta" class="nav-cta">Start Free</a>
         </div>
-        <div class="p-6 rounded-lg bg-white shadow hover:shadow-xl">
-          <i class="fas fa-clock text-3xl text-green-500 mb-4"></i>
-          <h3 class="text-xl font-semibold mb-2">Real-Time Settlement</h3>
-          <p class="text-gray-600">Instant settlements so your money is where it needs to be, when it needs to be.</p>
-        </div>
-        <div class="p-6 rounded-lg bg-white shadow hover:shadow-xl">
-          <i class="fas fa-shield-virus text-3xl text-red-500 mb-4"></i>
-          <h3 class="text-xl font-semibold mb-2">Fraud Protection</h3>
-          <p class="text-gray-600">Advanced AI algorithms to detect and prevent fraudulent activity instantly.</p>
-        </div>
-      </div>
     </div>
-  </section>
+</nav>
 
-  <!-- 24x7 Service Section -->
-  <!--<section class="bg-white py-20 px-8 text-gray-900" data-aos="fade-up">-->
-  <!--  <div class="max-w-6xl mx-auto">-->
-  <!--    <div class="text-center mb-12">-->
-  <!--      <h2 class="text-3xl font-bold brand-gradient">24x7 Customer Support</h2>-->
-  <!--      <p class="text-gray-600 mt-4">Our dedicated team is here for you anytime, any day. We're just a message away!</p>-->
-  <!--    </div>-->
-  <!--    <div class="flex flex-col md:flex-row items-center justify-center gap-12">-->
-  <!--      <div class="text-center">-->
-  <!--        <img src="assets/img/ecommerce/live-chat-image.jpg" alt="Live Chat" class="w-64 mx-auto" />-->
-  <!--        <h3 class="text-xl font-semibold mt-6">Live Chat</h3>-->
-  <!--        <p class="text-gray-600">Instant responses through our in-app chat system.</p>-->
-  <!--      </div>-->
-  <!--      <div class="text-center">-->
-  <!--        <img src="assets/img/ecommerce/" alt="Helpdesk" class="w-64 mx-auto" />-->
-  <!--        <h3 class="text-xl font-semibold mt-6">Ticketing System</h3>-->
-  <!--        <p class="text-gray-600">Submit queries and receive expert help round the clock.</p>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--</section>-->
-
-  <!-- Analytics Insight Section -->
-  <!--<section class="bg-white py-20 px-8 text-gray-900" data-aos="fade-up">-->
-  <!--  <div class="max-w-6xl mx-auto">-->
-  <!--    <div class="text-center mb-12">-->
-  <!--      <h2 class="text-3xl font-bold brand-gradient">Insights & Analytics</h2>-->
-  <!--      <p class="text-gray-600 mt-4">Track, analyze, and improve your transactions with powerful dashboards and real-time reporting tools.</p>-->
-  <!--    </div>-->
-  <!--    <div class="flex flex-col md:flex-row items-center justify-center gap-10">-->
-  <!--      <div class="text-center">-->
-  <!--        <img src="https://lottie.host/8709e779-eab6-4401-9989-ec8a273a8414/6NcknxEr8k.json" alt="Analytics" class="w-72 mx-auto" />-->
-  <!--        <h3 class="text-xl font-semibold mt-6">Smart Dashboard</h3>-->
-  <!--        <p class="text-gray-600">Visualize earnings, growth metrics, and transaction history.</p>-->
-  <!--      </div>-->
-  <!--      <div class="text-center">-->
-  <!--        <img src="https://lottie.host/e1872299-25c7-41db-817c-1b4f0ae5455b/bHOK6Vb3mW.json" alt="Reports" class="w-72 mx-auto" />-->
-  <!--        <h3 class="text-xl font-semibold mt-6">Custom Reports</h3>-->
-  <!--        <p class="text-gray-600">Generate downloadable reports tailored to your business needs.</p>-->
-  <!--      </div>-->
-  <!--    </div>-->
-  <!--  </div>-->
-  <!--</section>-->
-
-  <!-- Call to Action Section -->
-  <section class="section-bg py-20 px-8 text-gray-900" data-aos="fade-up">
-    <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold brand-gradient mb-6">Ready to Power Your Payments?</h2>
-      <p class="text-gray-600 mb-8">Join thousands of businesses already processing secure payments with Instopay. It’s your time now.</p>
-      <!--<a href="#" class="btn-primary px-6 py-3 rounded-lg shadow-lg">Create Your Free Account</a>-->
+<section class="hero" id="home">
+    <div class="wrap hero-grid">
+        <div class="reveal">
+            <h1>Powering the Future of <span class="text-gradient">Digital Payments</span></h1>
+            <p>
+                Instopay helps modern businesses process payments with speed, security, and clarity.
+                Launch quickly, monitor everything in real time, and scale with confidence.
+            </p>
+            <div class="btn-row">
+                <a href="#cta" class="btn-main">Get Started</a>
+                <a href="#how" class="btn-ghost">Live Demo</a>
+            </div>
+        </div>
+        <div class="float-stack reveal">
+            <div class="float-card float-success">
+                <span class="chip green"><i class="fa-solid fa-circle-check"></i> Payment Success</span>
+                <h5 style="margin-top:12px; margin-bottom:6px; font-weight:700;">INR 24,800 Received</h5>
+                <p style="margin:0; color:#64748b; font-size:0.92rem;">Settlement expected in 6 mins</p>
+            </div>
+            <div class="float-card float-graph">
+                <span class="chip purple"><i class="fa-solid fa-chart-line"></i> Analytics</span>
+                <div class="mini-graph">
+                    <span style="height:30%"></span><span style="height:42%"></span><span style="height:55%"></span>
+                    <span style="height:45%"></span><span style="height:64%"></span><span style="height:72%"></span>
+                    <span style="height:68%"></span><span style="height:84%"></span><span style="height:95%"></span>
+                </div>
+                <p style="margin-top:10px; color:#475569; font-size:0.9rem;">+28% volume growth this week</p>
+            </div>
+            <div class="float-card float-wallet">
+                <p style="margin:0; font-size:0.9rem; color:#64748b;">Wallet Balance</p>
+                <h4 style="margin:6px 0 12px; font-size:1.8rem; font-weight:800;">INR 5,42,190</h4>
+                <p style="margin:0; font-size:0.92rem; color:#475569;">Available for instant payout</p>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
+<section class="section-gap" id="features">
+    <div class="wrap">
+        <div class="reveal" style="max-width:700px;">
+            <h2 style="font-size:2rem; font-weight:800; margin-bottom:10px;">Built for Modern Payment Teams</h2>
+            <p style="color:#64748b; margin-bottom:28px;">A premium infrastructure stack designed for scale, security, and flawless checkout experiences.</p>
+        </div>
+        <div class="features-grid">
+            <article class="feature-card reveal"><div class="icon-glow"><i class="fa-solid fa-shield-halved"></i></div><h5>Enterprise Security</h5><p style="color:#64748b;">PCI-grade controls, risk scoring, and continuous fraud shielding.</p></article>
+            <article class="feature-card reveal"><div class="icon-glow"><i class="fa-solid fa-bolt"></i></div><h5>Instant Settlements</h5><p style="color:#64748b;">Move funds faster with smart routing and real-time reconciliation.</p></article>
+            <article class="feature-card reveal"><div class="icon-glow"><i class="fa-solid fa-code"></i></div><h5>Developer-First APIs</h5><p style="color:#64748b;">Clean APIs, robust docs, and simple SDKs for rapid integration.</p></article>
+            <article class="feature-card reveal"><div class="icon-glow"><i class="fa-solid fa-chart-pie"></i></div><h5>Live Intelligence</h5><p style="color:#64748b;">Monitor success rates, volumes, and trends with actionable dashboards.</p></article>
+            <article class="feature-card reveal"><div class="icon-glow"><i class="fa-solid fa-layer-group"></i></div><h5>Multi-Method Checkout</h5><p style="color:#64748b;">UPI, cards, wallets, and net banking in one seamless flow.</p></article>
+            <article class="feature-card reveal"><div class="icon-glow"><i class="fa-solid fa-headset"></i></div><h5>24/7 Priority Support</h5><p style="color:#64748b;">Dedicated experts to keep your payment stack healthy around the clock.</p></article>
+        </div>
+    </div>
+</section>
 
-</body>
-</html>
+<section class="section-gap" id="aboutus">
+    <div class="wrap reveal" style="padding: 0 0 20px;">
+        <h2 style="font-size:2rem; font-weight:800; margin-bottom:10px;">About Instopay</h2>
+        <p style="color:#334155; max-width:860px; font-size:1.05rem; line-height:1.75;">
+            Instopay is a modern digital payments platform helping businesses accept payments with reliability,
+            speed, and enterprise-grade security. We focus on premium onboarding, robust APIs, and real-time visibility
+            so teams can scale confidently.
+        </p>
+    </div>
+</section>
 
+<section class="section-gap" id="how">
+    <div class="wrap how-it-works reveal">
+        <h2 style="font-size:2rem; font-weight:800; text-align:center; margin-bottom:4px;">How It Works</h2>
+        <p style="text-align:center; color:#64748b;">Three simple steps to launch your payment engine.</p>
+        <div class="timeline">
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"><i class="fa-solid fa-user-plus"></i></div>
+                <h5>Create Account</h5>
+                <p style="color:#64748b;">Complete business onboarding and activate your merchant profile.</p>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"><i class="fa-solid fa-plug-circle-check"></i></div>
+                <h5>Integrate APIs</h5>
+                <p style="color:#64748b;">Connect checkout, webhooks, and payouts in just a few lines.</p>
+            </div>
+            <div class="timeline-item reveal">
+                <div class="timeline-dot"><i class="fa-solid fa-rocket"></i></div>
+                <h5>Go Live</h5>
+                <p style="color:#64748b;">Start accepting payments and track live performance instantly.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
+<section class="section-gap" id="stats">
+    <div class="wrap stats reveal">
+        <h2 style="font-size:2rem; font-weight:800; text-align:center; margin-bottom:0;">Trusted at Scale</h2>
+        <p style="text-align:center; color:#ddd6fe;">High-volume reliability for serious businesses.</p>
+        <div class="stats-grid">
+            <div class="stat-card"><div class="counter" data-target="350">0</div><p>Million+ Transactions</p></div>
+            <div class="stat-card"><div class="counter" data-target="120">0</div><p>Thousand+ Active Users</p></div>
+            <div class="stat-card"><div class="counter" data-target="99.99">0</div><p>Success Rate (%)</p></div>
+        </div>
+    </div>
+</section>
 
+<section class="section-gap" id="testimonials">
+    <div class="wrap">
+        <div class="reveal" style="text-align:center; max-width:700px; margin:0 auto 26px;">
+            <h2 style="font-size:2rem; font-weight:800;">What Merchants Say</h2>
+            <p style="color:#64748b;">Real teams using Instopay to improve checkout performance and reliability.</p>
+        </div>
+        <div class="testi-grid">
+            <article class="testi-card reveal">
+                <p>"Instopay cut our payment failures by 31% in the first month and gave us complete control over settlements."</p>
+                <div class="identity"><span class="avatar">AR</span><div><strong>Aryan Rana</strong><br><small style="color:#64748b;">CFO, NexCart</small></div></div>
+            </article>
+            <article class="testi-card reveal">
+                <p>"The API experience is clean, fast, and dependable. We moved from integration to production in less than a week."</p>
+                <div class="identity"><span class="avatar">SK</span><div><strong>Sneha Kapoor</strong><br><small style="color:#64748b;">CTO, PayOrbit</small></div></div>
+            </article>
+            <article class="testi-card reveal">
+                <p>"From dashboards to support quality, this feels like a premium fintech stack built for high-growth teams."</p>
+                <div class="identity"><span class="avatar">RM</span><div><strong>Rohan Mehta</strong><br><small style="color:#64748b;">Founder, BlueWave Commerce</small></div></div>
+            </article>
+        </div>
+    </div>
+</section>
 
+<section class="section-gap" id="cta">
+    <div class="wrap cta-block reveal">
+        <h2 style="font-size:2.1rem; font-weight:800; margin-bottom:8px;">Start Accepting Payments in Minutes</h2>
+        <p style="opacity:0.92; margin-bottom:0;">Get onboarding support, launch fast, and scale with confidence.</p>
+        <form class="cta-form">
+            <input type="email" placeholder="Enter your work email" aria-label="email input">
+            <button type="button">Request Access</button>
+        </form>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="wrap footer-grid">
+        <div>
+            <h4 class="footer-title">Instopay</h4>
+            <p style="color:#cbd5e1;">A high-performance payment infrastructure platform built for ambitious businesses.</p>
+        </div>
+        <div>
+            <h5 class="footer-title">Platform</h5>
+            <ul class="footer-links">
+                <li><a href="#features">Payments</a></li>
+                <li><a href="#features">Payouts</a></li>
+                <li><a href="#features">Fraud Shield</a></li>
+                <li><a href="#stats">Analytics</a></li>
+            </ul>
+        </div>
+        <div>
+            <h5 class="footer-title">Company</h5>
+            <ul class="footer-links">
+                <li><a href="#how">About</a></li>
+                <li><a href="#testimonials">Customers</a></li>
+                <li><a href="#cta">Careers</a></li>
+                <li><a href="#cta">Contact</a></li>
+            </ul>
+        </div>
+        <div>
+            <h5 class="footer-title">Resources</h5>
+            <ul class="footer-links">
+                <li><a href="#how">API Docs</a></li>
+                <li><a href="#how">Status</a></li>
+                <li><a href="#testimonials">Case Studies</a></li>
+                <li><a href="#cta">Support</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrap" style="margin-top:30px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.12); color:#a1a1aa;">
+        <small>© {{ date('Y') }} Instopay. All rights reserved.</small>
+    </div>
+</footer>
+
+<script>
+    const revealEls = document.querySelectorAll(".reveal");
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+        });
+    }, { threshold: 0.2 });
+    revealEls.forEach((el) => revealObserver.observe(el));
+
+    const counters = document.querySelectorAll(".counter");
+    const counterObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const target = parseFloat(el.getAttribute("data-target") || "0");
+            const isDecimal = String(target).includes(".");
+            let current = 0;
+            const step = target / 70;
+            const timer = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    el.textContent = isDecimal ? target.toFixed(2) : Math.round(target).toLocaleString();
+                    clearInterval(timer);
+                } else {
+                    el.textContent = isDecimal ? current.toFixed(2) : Math.round(current).toLocaleString();
+                }
+            }, 26);
+            observer.unobserve(el);
+        });
+    }, { threshold: 0.35 });
+    counters.forEach((counter) => counterObserver.observe(counter));
+</script>
 @endsection
