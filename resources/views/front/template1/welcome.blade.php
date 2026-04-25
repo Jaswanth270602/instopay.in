@@ -26,12 +26,6 @@
         overflow-x: hidden;
     }
 
-    /* Hide legacy template chrome for this redesigned landing page */
-    .bg-dark,
-    .w3l-footer-29-main {
-        display: none !important;
-    }
-
     .wrap {
         width: min(1180px, 92vw);
         margin: 0 auto;
@@ -71,12 +65,12 @@
     }
 
     .brand {
-        color: #ffffff;
+        color: #ffffff !important;
         font-weight: 800;
         letter-spacing: 0.3px;
         text-decoration: none;
         font-size: 1.15rem;
-        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
     }
 
     .nav-links {
@@ -89,12 +83,12 @@
     }
 
     .nav-links a {
-        color: #ffffff;
+        color: #ffffff !important;
         text-decoration: none;
         font-weight: 700;
         position: relative;
         padding-bottom: 5px;
-        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.38);
     }
 
     .nav-links a::after {
@@ -125,26 +119,28 @@
         border-radius: 10px;
         padding: 9px 14px;
         text-decoration: none;
-        color: #ffffff;
+        color: #ffffff !important;
         font-weight: 700;
         border: 1px solid rgba(255, 255, 255, 0.38);
         background: rgba(255, 255, 255, 0.12);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
         transition: all 0.22s ease;
     }
 
     .nav-auth:hover {
         background: rgba(255, 255, 255, 0.22);
-        color: #ffffff;
+        color: #ffffff !important;
     }
 
     .nav-cta {
         border: 0;
         border-radius: 999px;
         padding: 10px 18px;
-        color: #fff;
-        font-weight: 600;
+        color: #ffffff !important;
+        font-weight: 700;
         text-decoration: none;
         background: linear-gradient(120deg, #5b21b6, #7c3aed, #a78bfa);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.28);
         box-shadow: 0 0 0 rgba(167, 139, 250, 0.4);
         transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
@@ -219,9 +215,15 @@
     .feature-card p,
     .timeline-item p,
     .testi-card p,
-    .stats p,
     .cta-block p {
         color: #334155 !important;
+    }
+
+    .stats p,
+    .stats h2,
+    .stats .counter {
+        color: #ffffff !important;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
     }
 
     .btn-row {
@@ -292,11 +294,12 @@
         display: inline-flex;
         gap: 8px;
         align-items: center;
-        color: #fff;
+        color: #ffffff !important;
         border-radius: 999px;
         padding: 6px 12px;
         font-size: 0.78rem;
-        font-weight: 600;
+        font-weight: 700;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.22);
     }
 
     .chip.green { background: linear-gradient(90deg, #16a34a, #22c55e); }
@@ -601,28 +604,6 @@
     }
 </style>
 
-<nav class="glass-nav wrap">
-    <div class="nav-content">
-        <a href="#home" class="brand">Instopay</a>
-        <ul class="nav-links">
-            <li><a href="{{ url('') }}">Home</a></li>
-            <li><a href="{{ url('pages') }}/{{ $company_id }}/about-us">About Us</a></li>
-            <li><a href="{{ url('contact-us') }}">Contact</a></li>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#how">How It Works</a></li>
-            <li><a href="#stats">Stats</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-        </ul>
-        <div class="nav-actions">
-            <a href="{{ url('login') }}" class="nav-auth">Login</a>
-            @if(isset($registration_status) && $registration_status == 1)
-                <a href="{{ url('sign-up') }}" class="nav-auth">Register</a>
-            @endif
-            <a href="#cta" class="nav-cta">Start Free</a>
-        </div>
-    </div>
-</nav>
-
 <section class="hero" id="home">
     <div class="wrap hero-grid">
         <div class="reveal">
@@ -757,45 +738,6 @@
         </form>
     </div>
 </section>
-
-<footer class="site-footer">
-    <div class="wrap footer-grid">
-        <div>
-            <h4 class="footer-title">Instopay</h4>
-            <p style="color:#cbd5e1;">A high-performance payment infrastructure platform built for ambitious businesses.</p>
-        </div>
-        <div>
-            <h5 class="footer-title">Platform</h5>
-            <ul class="footer-links">
-                <li><a href="#features">Payments</a></li>
-                <li><a href="#features">Payouts</a></li>
-                <li><a href="#features">Fraud Shield</a></li>
-                <li><a href="#stats">Analytics</a></li>
-            </ul>
-        </div>
-        <div>
-            <h5 class="footer-title">Company</h5>
-            <ul class="footer-links">
-                <li><a href="#how">About</a></li>
-                <li><a href="#testimonials">Customers</a></li>
-                <li><a href="#cta">Careers</a></li>
-                <li><a href="#cta">Contact</a></li>
-            </ul>
-        </div>
-        <div>
-            <h5 class="footer-title">Resources</h5>
-            <ul class="footer-links">
-                <li><a href="#how">API Docs</a></li>
-                <li><a href="#how">Status</a></li>
-                <li><a href="#testimonials">Case Studies</a></li>
-                <li><a href="#cta">Support</a></li>
-            </ul>
-        </div>
-    </div>
-    <div class="wrap" style="margin-top:30px; padding-top:16px; border-top:1px solid rgba(255,255,255,0.12); color:#a1a1aa;">
-        <small>© {{ date('Y') }} Instopay. All rights reserved.</small>
-    </div>
-</footer>
 
 <script>
     const revealEls = document.querySelectorAll(".reveal");

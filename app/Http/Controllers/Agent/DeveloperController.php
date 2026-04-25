@@ -173,7 +173,7 @@ class DeveloperController extends Controller
     function provider_list()
     {
         if (Auth::User()->role_id == 10) {
-            $providers = Provider::whereIn('service_id', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])->get();
+            $providers = Provider::whereIn('service_id', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16])->get();
             $data = array('page_title' => 'Provider List');
             return view('agent.developer.provider_list', compact('providers'))->with($data);
         } else {
@@ -481,6 +481,12 @@ class DeveloperController extends Controller
     {
         $data = array('page_title' => 'Payin 8 Docs');
         return view('agent.developer.payinEightDocs')->with($data);
+    }
+
+    function payinNineDocs()
+    {
+        $data = array('page_title' => 'Payin 9 Docs');
+        return view('agent.developer.payinNineDocs')->with($data);
     }
 
 }

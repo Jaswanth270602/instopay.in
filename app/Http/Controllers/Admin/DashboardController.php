@@ -340,21 +340,21 @@ class DashboardController extends Controller
             .service-sales-row {
                 display: flex !important;
                 flex-wrap: wrap !important;
-                gap: 16px !important;
+                gap: 10px !important;
                 justify-content: flex-start !important;
                 align-items: stretch !important;
                 width: 100% !important;
             }
             .service-sales-col {
-                flex: 1 1 calc(33.333% - 16px) !important;
-                min-width: 300px !important;
+                flex: 0 1 calc(33.333% - 10px) !important;
+                min-width: 220px !important;
                 max-width: 100% !important;
                 box-sizing: border-box !important;
             }
             @media (max-width: 1199px) {
                 .service-sales-col {
-                    flex: 1 1 calc(50% - 16px) !important;
-                    min-width: 280px !important;
+                    flex: 0 1 calc(50% - 10px) !important;
+                    min-width: 220px !important;
                 }
             }
             @media (max-width: 767px) {
@@ -367,10 +367,10 @@ class DashboardController extends Controller
                 background: repeating-linear-gradient(135deg, #4c1d95, #4c1d95 14px, #6d28d9 14px, #6d28d9 28px) !important;
                 color: #ffffff !important;
                 border: none !important;
-                border-radius: 16px !important;
+                border-radius: 12px !important;
                 box-shadow: 0 10px 30px rgba(76,29,149,0.25) !important;
                 transition: all 0.3s ease-in-out !important;
-                min-height: 140px !important;
+                min-height: 96px !important;
                 width: 100% !important;
                 display: flex !important;
                 align-items: center !important;
@@ -381,15 +381,15 @@ class DashboardController extends Controller
             .service-card-body {
                 display: flex !important;
                 align-items: center !important;
-                padding: 20px !important;
+                padding: 12px !important;
                 width: 100% !important;
-                gap: 16px !important;
+                gap: 10px !important;
             }
             .service-image-container {
                 flex-shrink: 0 !important;
-                width: 70px !important;
-                height: 70px !important;
-                min-width: 70px !important;
+                width: 48px !important;
+                height: 48px !important;
+                min-width: 48px !important;
             }
             .service-image {
                 width: 100% !important;
@@ -407,9 +407,9 @@ class DashboardController extends Controller
             }
             .service-title {
                 font-weight: 700 !important;
-                font-size: 16px !important;
+                font-size: 14px !important;
                 color: #ffffff !important;
-                margin-bottom: 12px !important;
+                margin-bottom: 6px !important;
                 line-height: 1.3 !important;
                 white-space: nowrap !important;
                 overflow: hidden !important;
@@ -430,13 +430,13 @@ class DashboardController extends Controller
             }
             .stat-label {
                 font-weight: 700 !important;
-                font-size: 14px !important;
+                font-size: 12px !important;
                 white-space: nowrap !important;
             }
             .stat-value {
                 font-weight: 600 !important;
                 color: #ffffff !important;
-                font-size: 14px !important;
+                font-size: 12px !important;
                 white-space: nowrap !important;
                 margin-left: 8px !important;
             }
@@ -445,13 +445,13 @@ class DashboardController extends Controller
             
             /* Special handling for 1-2 cards */
             .service-sales-row:has(> .service-sales-col:nth-child(1):last-child) .service-sales-col {
-                flex: 0 1 400px !important;
-                max-width: 400px !important;
+                flex: 0 1 280px !important;
+                max-width: 280px !important;
             }
             .service-sales-row:has(> .service-sales-col:nth-child(2):last-child) .service-sales-col {
-                flex: 0 1 calc(50% - 16px) !important;
-                min-width: 300px !important;
-                max-width: 400px !important;
+                flex: 0 1 calc(50% - 10px) !important;
+                min-width: 220px !important;
+                max-width: 280px !important;
             }
         </style>';
     

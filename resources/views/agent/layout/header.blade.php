@@ -37,7 +37,7 @@
 
     <style>
         .custom-navbar {
-            background-color: #2c3e50; /* A dark blue-gray color */
+            background-color: #2B145C;
         }
     </style>
 
@@ -208,16 +208,14 @@
 
 <!-- Buttons aligned right -->
 <div style="margin-left: auto; display: flex; gap: 10px;">
-    <!-- Payout Button (Orange) -->
-    <li aria-haspopup="true" class="btn" style="background-color: #ff9800;">
-        <a href="#" style="color: white;">
+    <li aria-haspopup="true" class="btn" style="background-color: #6D28D9;">
+        <a href="#" style="color: #ffffff; font-weight: 800; letter-spacing: 0.2px; text-shadow: 0 0 8px rgba(255,255,255,0.35), 0 1px 2px rgba(0,0,0,0.4);">
             Payout Bal : <span class="normal_balance"></span>
         </a>
     </li>
 
-    <!-- Payin Button (Tint / Teal) -->
-    <li aria-haspopup="true" class="btn" style="background-color: #4dd0e1;">
-        <a href="#" style="color: white;">
+    <li aria-haspopup="true" class="btn" style="background-color: #4C1D95;">
+        <a href="#" style="color: #ffffff; font-weight: 800; letter-spacing: 0.2px; text-shadow: 0 0 8px rgba(255,255,255,0.35), 0 1px 2px rgba(0,0,0,0.4);">
             Payin Bal : <span class="aeps_balance"></span>
         </a>
     </li>
@@ -239,7 +237,9 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{url('admin/dashboard')}}">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ $page_title }}</li>
+                        @if(strtolower(trim($page_title ?? '')) !== 'dashboard')
+                            <li class="breadcrumb-item active" aria-current="page">{{ $page_title }}</li>
+                        @endif
                     </ol>
                 </nav>
             </div>

@@ -5,10 +5,7 @@
         <div class="main-header-left ">
             <a class="animated-arrow hor-toggle horizontal-navtoggle"><span></span></a><!-- sidebar-toggle-->
             <a class="header-brand" href="{{url('agent/dashboard')}}">
-                <img src="{{$cdnLink}}{{$company_logo}}" class="logo-white ">
-                <img src="{{$cdnLink}}{{$company_logo}}" class="logo-default">
-                <img src="{{$cdnLink}}{{$company_logo}}" class="icon-white">
-                <img src="{{$cdnLink}}{{$company_logo}}" class="icon-default">
+                <span class="logo-default brand-text">Instopay</span>
             </a>
 
             <div class="main-header-center  ml-4">

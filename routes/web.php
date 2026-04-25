@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\FrontController::class, 'welcome'])->name('home');
 Route::get('/pages/{company_id}/{slug}', [App\Http\Controllers\FrontController::class, 'dynamic_page'])->name('dynamic_page');
 Route::get('/contact-us', [App\Http\Controllers\FrontController::class, 'contact_us'])->name('contact_us');
+Route::view('/privacy-policy', 'front.template1.policies.privacy_policy')->name('privacy_policy');
+Route::view('/refund-policy', 'front.template1.policies.refund_policy')->name('refund_policy');
+Route::view('/terms-and-conditions', 'front.template1.policies.terms_and_conditions')->name('terms_and_conditions');
 Auth::routes(['register' => false, 'reset' => false, 'verify' => false, 'confirm' => false]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
 Route::post('/save-contact-enquiry', [App\Http\Controllers\FrontController::class, 'save_contact_enquiry'])->name('save_contact_enquiry');
@@ -680,6 +683,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/payin-five-docs', [App\Http\Controllers\Agent\DeveloperController::class, 'payinfiveDocs']);
             Route::get('/payin-seven-docs', [App\Http\Controllers\Agent\DeveloperController::class, 'payinSevenDocs']);
             Route::get('/payin-eight-docs', [App\Http\Controllers\Agent\DeveloperController::class, 'payinEightDocs']);
+            Route::get('/payin-nine-docs', [App\Http\Controllers\Agent\DeveloperController::class, 'payinNineDocs']);
 
         });
 
@@ -799,6 +803,13 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/create-order', [App\Http\Controllers\Agent\ZigPayController::class, 'createOrderWeb']);
             Route::post('/order-status', [App\Http\Controllers\Agent\ZigPayController::class, 'webOrderStatus']);
             Route::get('/view-qrcode', [App\Http\Controllers\Agent\ZigPayController::class, 'viewQrcode']);
+        });
+
+        Route::group(['prefix' => 'add-money/v9', 'middleware' => 'auth'], function () {
+            Route::get('/welcome', [App\Http\Controllers\Agent\PayinNineController::class, 'welcome']);
+            Route::post('/create-order', [App\Http\Controllers\Agent\PayinNineController::class, 'createOrderWeb']);
+            Route::post('/order-status', [App\Http\Controllers\Agent\PayinNineController::class, 'webOrderStatus']);
+            Route::get('/view-qrcode', [App\Http\Controllers\Agent\PayinNineController::class, 'viewQrcode']);
         });
 
 

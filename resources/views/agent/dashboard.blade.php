@@ -124,8 +124,8 @@
             
             <!--/going to change from here -->
 
-            <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 serve">
-            <div class="card overflow-hidden" style="background-color: #aa22d3ff;" >
+            <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12">
+            <div class="card overflow-hidden service-section-card">
                 <div class="card-header bg-transparent pd-b-0 pd-t-20 bd-b-0">
                     <div class="d-flex justify-content-between">
                         <h4 class="card-title mg-b-10" >Services</h4>
@@ -300,39 +300,55 @@
 
     <style>
     
-    .payout-cards {
-        color: bisque;
-        position: relative;
-        background-color: bisque;
-    }
-
-    .serve {
-        margin-left: 15%;
-    }
-
         .no-gutters {
             margin-right: 0;
             margin-left: 0;
         }
 
+        .service-section-card {
+            background: linear-gradient(180deg, #fcfaff, #ffffff) !important;
+            border: 1px solid #e9d5ff !important;
+            box-shadow: 0 14px 28px rgba(76, 29, 149, 0.1) !important;
+        }
+
+        .service-section-card .card-title {
+            color: #4c1d95 !important;
+            font-weight: 700;
+        }
+
         .tray2 {
-             text-align: center;
-        padding: 12px 0;
-        border: 1px solid #e5e5e5;
-        background: #03dfd4ff; /* Light Sky Blue */
-        border-radius: 6px;
-        margin: 15px;
-        transition: all 0.3s ease-in-out;
-        display: block !important;
-        color: inherit;
+            text-align: center;
+            padding: 14px 0;
+            border: 1px solid #c4b5fd;
+            background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 45%, #f5f3ff 100%) !important;
+            border-radius: 12px;
+            margin: 12px;
+            transition: all 0.25s ease-in-out;
+            display: block !important;
+            color: #4c1d95 !important;
+            box-shadow:
+                0 10px 22px rgba(76, 29, 149, 0.16),
+                inset 0 1px 0 rgba(255, 255, 255, 0.55);
         }
 
         .tray2:hover {
             transform: translateY(-5px);
-        box-shadow: 0 4px 20px rgba(0, 140, 255, 0.3);
-        background: #d4f1ff;
-        border: 1px solid #76c7f7;
-        color: #0079c1;
+            box-shadow:
+                0 16px 28px rgba(76, 29, 149, 0.24),
+                0 0 0 2px rgba(167, 139, 250, 0.25);
+            border-color: #a78bfa;
+            color: #4c1d95 !important;
+            background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 40%, #ede9fe 100%) !important;
+        }
+
+        .tray2 img {
+            width: 46px;
+            height: 46px;
+            object-fit: contain;
+            background: #ffffff;
+            border-radius: 999px;
+            padding: 8px;
+            box-shadow: 0 6px 12px rgba(76, 29, 149, 0.16);
         }
 
         .tray2 i {
@@ -341,11 +357,12 @@
 
         .tray2 span {
             display: block;
-        margin: 10px auto 0;
-        font-size: 14px;
-        font-weight: 600;
-        letter-spacing: 1px;
-        font-family: Poppins, sans-serif;
+            margin: 10px auto 0;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.3px;
+            font-family: Poppins, sans-serif;
+            color: #4c1d95 !important;
         }
     </style>
 @endsection

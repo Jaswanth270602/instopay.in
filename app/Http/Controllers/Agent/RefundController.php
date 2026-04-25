@@ -411,6 +411,118 @@ class RefundController extends Controller
 
         return response()->json(['status' => true, 'message' => 'Callback processed successfully']);
     }
+
+    public function payin9Payout(Request $request)
+    {
+        $ctime = now();
+        $payload = $request->all();
+        $jsonPayload = json_decode((string)$request->getContent(), true);
+        if ((!is_array($payload) || empty($payload)) && is_array($jsonPayload)) {
+            $payload = $jsonPayload;
+        }
+
+        Log::info('Payin9 payout callback received', [
+            'ip' => request()->ip(),
+            'payload' => $payload,
+        ]);
+
+        Apiresponse::insertGetId([
+            'message' => json_encode($payload),
+            'api_type' => 16,
+            'response_type' => 'call_back',
+            'ip_address' => request()->ip(),
+            'created_at' => $ctime,
+        ]);
+
+        $event = strtolower((string)($payload['event'] ?? ''));
+        $data = is_array($payload['data'] ?? null) ? $payload['data'] : [];
+
+        $statusRaw = strtolower((string)($data['status'] ?? ''));
+        $statusCodeRaw = (string)($data['statusCode'] ?? '');
+        if (in_array($event, ['payout_successful'], true) || in_array($statusRaw, ['success', 'successful', 'processed'], true) || $statusCodeRaw === '1') {
+            $statusId = 1;
+        } elseif (in_array($event, ['payout_failed'], true) || in_array($statusRaw, ['failed', 'failure', 'rejected'], true) || $statusCodeRaw === '0') {
+            $statusId = 2;
+        } else {
+            $statusId = 3;
+        }
+
+        $clientRef = (string)($data['userTransactionId'] ?? $payload['userTransactionId'] ?? $payload['client_id'] ?? '');
+        $utr = (string)($data['utr'] ?? $payload['utr'] ?? $payload['bankTransactionId'] ?? '');
+        $reason = (string)($data['messageString'] ?? $payload['message'] ?? $payload['messageString'] ?? '');
+        $amount = (float)($data['amount'] ?? $payload['amount'] ?? 0);
+
+        $report = null;
+        $reportIdRaw = (string)($payload['report_id'] ?? $payload['reportId'] ?? $data['report_id'] ?? $data['reportId'] ?? '');
+        if ($reportIdRaw !== '' && ctype_digit($reportIdRaw)) {
+            $report = Report::find((int)$reportIdRaw);
+        }
+        if (!$report && $clientRef !== '' && ctype_digit($clientRef)) {
+            $report = Report::find((int)$clientRef);
+        }
+        if (!$report && $clientRef !== '') {
+            $report = Report::where('client_id', $clientRef)->orderBy('id', 'DESC')->first();
+        }
+        if (!$report && $clientRef !== '') {
+            $report = Report::where('payid', $clientRef)->orderBy('id', 'DESC')->first();
+        }
+        if (!$report && preg_match('/(\d{1,10})$/', $clientRef, $matches)) {
+            $report = Report::find((int)$matches[1]);
+        }
+
+        if (!$report) {
+            return response()->json(['status' => false, 'message' => 'Report not found'], 404);
+        }
+
+        $mode = "Call-back";
+        $refundLibrary = new RefundLibrary();
+        if ($report->wallet_type == 1) {
+            $refundLibrary->update_transaction($statusId, $utr ?: $reason, $report->id, $mode);
+        } elseif ($report->wallet_type == 2) {
+            $refundLibrary->update_transaction_aeps($statusId, $utr ?: $reason, $report->id, $mode);
+        }
+
+        $member = Member::where('user_id', $report->user_id)->first();
+        $payoutCallbackUrl = $member->payoutcallbackurl ?? '';
+        if (empty($payoutCallbackUrl)) {
+            $payoutCallbackUrl = $member->call_back_url ?? '';
+        }
+
+        if (!empty($payoutCallbackUrl)) {
+            $userDetails = User::find($report->user_id);
+            if ($userDetails) {
+                $merchantStatus = $statusId === 1 ? 'success' : ($statusId === 2 ? 'failed' : 'pending');
+                $queryParams = [
+                    'status' => $merchantStatus,
+                    'client_id' => $report->client_id ?: $report->id,
+                    'amount' => $amount > 0 ? $amount : (float)$report->amount,
+                    'utr' => $utr,
+                    'txnid' => $report->id,
+                ];
+                $signatureString = http_build_query($queryParams);
+                $queryParams['signature'] = hash_hmac('sha256', $signatureString, $userDetails->api_token);
+                $url = $payoutCallbackUrl . '?' . http_build_query($queryParams);
+
+                try {
+                    $response = Helpers::pay_curl_get($url);
+                    Traceurl::insertGetId([
+                        'user_id' => $report->user_id,
+                        'url' => $url,
+                        'number' => $userDetails->mobile ?? '',
+                        'response_message' => $response,
+                        'created_at' => $ctime,
+                    ]);
+                } catch (\Exception $e) {
+                    Log::error('Payin9 payout callback forward failed', [
+                        'error' => $e->getMessage(),
+                        'report_id' => $report->id,
+                    ]);
+                }
+            }
+        }
+
+        return response()->json(['status' => true, 'message' => 'Callback processed successfully']);
+    }
     
     public function safepPayout(Request $request)
     {

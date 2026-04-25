@@ -1,11 +1,7 @@
 @extends('front.template1.header')
 @section('content')
 @php
-    $sanitizedContent = str_ireplace(
-        ['d2cpay', 'd2c-pay', 'd2c pay'],
-        'Instopay',
-        $content ?? ''
-    );
+    $sanitizedContent = preg_replace('/d2c[\s-]?pay/i', 'Instopay', $content ?? '');
 @endphp
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,11 +32,11 @@
     }
 
     .page-hero {
-        border-radius: 24px;
-        padding: 34px 28px;
+        border-radius: 12px;
+        padding: 16px 14px;
         color: #fff;
         background: linear-gradient(125deg, var(--purple-deep), var(--purple-violet), var(--purple-soft));
-        box-shadow: 0 22px 38px rgba(76, 29, 149, 0.28);
+        box-shadow: 0 8px 14px rgba(76, 29, 149, 0.14);
     }
 
     .bread {
@@ -70,12 +66,12 @@
     }
 
     .page-card {
-        margin-top: 22px;
-        border-radius: 22px;
+        margin-top: 10px;
+        border-radius: 12px;
         background: rgba(255, 255, 255, 0.92);
         border: 1px solid rgba(124, 58, 237, 0.17);
-        box-shadow: 0 18px 30px rgba(15, 23, 42, 0.08);
-        padding: 32px 28px;
+        box-shadow: 0 6px 12px rgba(15, 23, 42, 0.06);
+        padding: 16px 14px;
     }
 
     .page-content {
@@ -106,7 +102,7 @@
     @media (max-width: 768px) {
         .page-hero,
         .page-card {
-            padding: 24px 18px;
+            padding: 12px 10px;
         }
     }
 </style>

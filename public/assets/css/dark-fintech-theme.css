@@ -325,3 +325,74 @@ hr, .dropdown-divider, .border, .border-top, .border-bottom, .border-left, .bord
 .main-content-body .row.row-sm > .col-xl-3 .card .text-primary-shadow {
     color: #A855F7 !important;
 }
+
+/* Agent header brand override (remove old logo dependency) */
+.header-brand .brand-text {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 0 8px;
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    color: #ffffff !important;
+    text-transform: capitalize;
+}
+
+.header-brand .brand-icon {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 800;
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Agent top header: remove extra boxed backgrounds */
+.main-header-center .dropdown-menu-rounded,
+.main-header-center .btn-group,
+.main-header-center .dropdown {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+}
+
+.main-header-center .btn,
+.main-header-center .btn-link,
+.main-header-center .dropdown-toggle {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: #ffffff !important;
+}
+
+.main-header-center .btn:hover,
+.main-header-center .btn-link:hover,
+.main-header-center .dropdown-toggle:hover,
+.main-header-center .btn:focus,
+.main-header-center .btn-link:focus,
+.main-header-center .dropdown-toggle:focus {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+}
+
+/* Keep dashboard top strip text readable on light background */
+.breadcrumb-header .content-title,
+.breadcrumb-header .breadcrumb-item,
+.breadcrumb-header .breadcrumb-item.active,
+.breadcrumb-header .label,
+.breadcrumb-header .d-block {
+    color: #1F2937 !important;
+    text-shadow: none !important;
+}
+
+.breadcrumb-header .breadcrumb-item a,
+.breadcrumb-header .value {
+    color: #6D28D9 !important;
+    text-shadow: none !important;
+}

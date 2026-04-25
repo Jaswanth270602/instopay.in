@@ -61,10 +61,11 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link text-white fw-semibold" href="{{url('')}}">Home</a></li>
-                    @foreach(App\Models\Navigation::where('status_id', 1)->where('company_id', $company_id)->where('type', 1)->get() as $value)
-                    <li class="nav-item"><a class="nav-link text-white fw-semibold" href="{{url('pages')}}/{{$company_id}}/{{ $value->navigation_slug}}">{{ $value->navigation_name }}</a></li>
-                    @endforeach
-
+                    <li class="nav-item"><a class="nav-link text-white fw-semibold" href="{{url('pages')}}/{{$company_id}}/about-us">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link text-white fw-semibold" href="{{url('')}}#features">Features</a></li>
+                    <li class="nav-item"><a class="nav-link text-white fw-semibold" href="{{url('')}}#how">How It Works</a></li>
+                    <li class="nav-item"><a class="nav-link text-white fw-semibold" href="{{url('')}}#stats">Stats</a></li>
+                    <li class="nav-item"><a class="nav-link text-white fw-semibold" href="{{url('')}}#testimonials">Testimonials</a></li>
                     <li class="nav-item">
                         <a class="nav-link text-white fw-semibold" href="{{url('contact-us')}}">Contact</a>
                     </li>
@@ -83,58 +84,88 @@
     </nav>
 </section>
 
+<style>
+    /* Shared static header + footer modern styling */
+    .bg-dark {
+        background: linear-gradient(90deg, #4C1D95, #7C3AED, #A855F7) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+        box-shadow: 0 12px 24px rgba(76, 29, 149, 0.22);
+    }
+
+    .bg-dark .navbar .nav-link {
+        color: #ffffff !important;
+        font-weight: 700 !important;
+        opacity: 0.95;
+    }
+
+    .bg-dark .navbar .nav-link:hover {
+        opacity: 1;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+    }
+
+    .bg-dark .btn-theme {
+        border-radius: 10px !important;
+        border: 1px solid rgba(255, 255, 255, 0.24) !important;
+        background: rgba(255, 255, 255, 0.12) !important;
+        color: #ffffff !important;
+        font-weight: 700 !important;
+    }
+
+    .bg-dark .btn-theme:hover {
+        background: rgba(255, 255, 255, 0.2) !important;
+        color: #ffffff !important;
+    }
+
+    .w3l-footer-29-main .footer-29 {
+        background: linear-gradient(90deg, #4C1D95, #7C3AED, #A855F7) !important;
+    }
+</style>
+
 @yield('content')
 
-<!-- grids block 5 -->
 <section class="w3l-footer-29-main">
-    <div class="footer-29">
+    <div class="footer-29 site-footer-modern">
         <div class="container">
             <div class="d-grid grid-col-4 footer-top-29">
                 <div class="footer-list-29 footer-1">
                     <h6 class="footer-title-29"><a href="{{url('')}}" style="font-size: 28px; font-weight: 700; color: #ffffff; text-decoration: none;">Instopay</a></h6>
-
-                   {{-- <div class="main-social-footer-29">
-                        <a href="#facebook" class="facebook"><span class="fa fa-facebook"></span></a>
-                        <a href="#twitter" class="twitter"><span class="fa fa-twitter"></span></a>
-                        <a href="#instagram" class="instagram"><span class="fa fa-instagram"></span></a>
-                        <a href="#google-plus" class="google-plus"><span class="fa fa-google-plus"></span></a>
-                        <a href="#linkedin" class="linkedin"><span class="fa fa-linkedin"></span></a>
-                    </div>--}}
+                    <p style="color:#e9ddff; max-width: 280px;">A high-performance payment infrastructure platform built for ambitious businesses.</p>
                 </div>
                 <div class="footer-list-29 footer-2">
                     <ul>
-                        <h6 class="footer-title-29">Features</h6>
-
+                        <h6 class="footer-title-29">Platform</h6>
+                        <li><a href="{{url('')}}#features">Payments</a></li>
+                        <li><a href="{{url('')}}#features">Payouts</a></li>
+                        <li><a href="{{url('')}}#features">Fraud Shield</a></li>
+                        <li><a href="{{url('')}}#stats">Analytics</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-list-29 footer-3">
-
-                    <h6 class="footer-title-29">Newsletter </h6>
-                    <form action="#" class="subscribe" method="post">
-                        <input type="email" name="email" placeholder="Email" required="">
-                        <button><span class="fa fa-envelope-o"></span></button>
-                    </form>
-                    <p>Subscribe and get our weekly newsletter</p>
-                    <p>We'll never share your email address</p>
-
+                    <ul>
+                        <h6 class="footer-title-29">Company</h6>
+                        <li><a href="{{url('pages')}}/{{$company_id}}/about-us">About</a></li>
+                        <li><a href="{{url('')}}#testimonials">Customers</a></li>
+                        <li><a href="{{url('contact-us')}}">Contact</a></li>
+                    </ul>
                 </div>
+
                 <div class="footer-list-29 footer-4">
                     <ul>
                         <h6 class="footer-title-29">Quick Links</h6>
-                        @foreach(App\Models\Navigation::where('status_id', 1)->where('company_id', $company_id)->where('type', 2)->get() as $value)
-                        <li><a href="{{url('pages')}}/{{$company_id}}/{{ $value->navigation_slug}}">{{ $value->navigation_name }}</a></li>
-                        @endforeach
+                        <li><a href="{{ route('privacy_policy') }}">Privacy Policy</a></li>
+                        <li><a href="{{ route('refund_policy') }}">Refund Policy</a></li>
+                        <li><a href="{{ route('terms_and_conditions') }}">Terms and Conditions</a></li>
                     </ul>
                 </div>
             </div>
             <div class="d-grid grid-col-2 bottom-copies">
-                <p class="copy-footer-29">© 2020 {{ config('app.name', 'Instopay') }}. All rights reserved </p>
+                <p class="copy-footer-29">© {{ date('Y') }} {{ config('app.name', 'Instopay') }}. All rights reserved </p>
                 <ul class="list-btm-29">
-                    @foreach(App\Models\Navigation::where('status_id', 1)->where('company_id', $company_id)->where('type',2)->get() as $value)
-                    <li><a href="{{url('pages')}}/{{$company_id}}/{{ $value->navigation_slug}}">{{ $value->navigation_name }}</a></li>
-                    @endforeach
-
+                    <li><a href="{{ route('privacy_policy') }}">Privacy Policy</a></li>
+                    <li><a href="{{ route('refund_policy') }}">Refund Policy</a></li>
+                    <li><a href="{{ route('terms_and_conditions') }}">Terms and Conditions</a></li>
                 </ul>
             </div>
         </div>

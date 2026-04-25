@@ -1,8 +1,8 @@
 @extends('front.template1.header')
 @section('content')
 @php
-    $displayCompanyEmail = str_ireplace(['d2cpay', 'd2c-pay', 'd2c pay'], 'instopay', $company_email ?? '');
-    $displayAddress = str_ireplace(['d2cpay', 'd2c-pay', 'd2c pay'], 'Instopay', $company_address ?? '');
+    $displayCompanyEmail = preg_replace('/d2c[\s-]?pay/i', 'instopay', $company_email ?? '');
+    $displayAddress = preg_replace('/d2c[\s-]?pay/i', 'Instopay', $company_address ?? '');
 @endphp
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

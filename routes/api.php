@@ -34,6 +34,8 @@ Route::prefix('call-back')->group(function () {
     Route::any('/electrakart', [App\Http\Controllers\Agent\ElectraKartController::class, 'callbackUrl']);
     Route::any('/safeppay', [App\Http\Controllers\Agent\SafepPayController::class, 'callbackUrl']);
     Route::any('/zigpay-payin', [App\Http\Controllers\Agent\ZigPayController::class, 'callbackUrl']);
+    Route::any('/payin9-payin', [App\Http\Controllers\Agent\PayinNineController::class, 'callbackUrl']);
+    Route::any('/payin9-payout', [App\Http\Controllers\Agent\RefundController::class, 'payin9Payout']);
     Route::any('/zigpay-payout', [App\Http\Controllers\Agent\RefundController::class, 'zigpayPayout']);
     Route::any('/vtransact-payout', [App\Http\Controllers\Agent\RefundController::class, 'vtransactPayout']);
     Route::any('/safeppay-payout', [App\Http\Controllers\Agent\RefundController::class, 'safepPayout']);
@@ -263,6 +265,11 @@ Route::prefix('add-money/v7')->group(function () {
 Route::prefix('add-money/v8')->group(function () {
     Route::post('/createOrder', [App\Http\Controllers\Agent\ZigPayController::class, 'createOrderApi'])->middleware('auth:api');
     Route::post('/status-enquiry', [App\Http\Controllers\Agent\ZigPayController::class, 'statusEnquiryApi'])->middleware('auth:api');
+});
+
+Route::prefix('add-money/v9')->group(function () {
+    Route::post('/createOrder', [App\Http\Controllers\Agent\PayinNineController::class, 'createOrderApi'])->middleware('auth:api');
+    Route::post('/status-enquiry', [App\Http\Controllers\Agent\PayinNineController::class, 'statusEnquiryApi'])->middleware('auth:api');
 });
 
 
