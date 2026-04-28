@@ -156,8 +156,17 @@
                     alert(msg.message || 'Failed to create order');
                 }
             },
-            error: function() {
-                alert('Network or server error. Please try again.');
+            error: function(xhr) {
+                let errMsg = 'Network or server error. Please try again.';
+                if (xhr && xhr.responseJSON && xhr.responseJSON.message) {
+                    errMsg = xhr.responseJSON.message;
+                } else if (xhr && xhr.responseText) {
+                    try {
+                        const parsed = JSON.parse(xhr.responseText);
+                        if (parsed && parsed.message) errMsg = parsed.message;
+                    } catch (e) {}
+                }
+                alert(errMsg);
             }
         });
     }

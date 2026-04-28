@@ -31,9 +31,14 @@ class PayinNineController extends Controller
     private $max_amount;
     private $base_url;
     private $strategy;
+    private $username;
     private $email;
     private $password;
     private $user_token;
+    private $auth_endpoint;
+    private $collection_endpoint;
+    private $api_access_id;
+    private $api_access_secret;
 
     public function __construct()
     {
@@ -47,26 +52,38 @@ class PayinNineController extends Controller
         $credentials = json_decode(optional(Api::find($this->api_id))->credentials);
         $this->base_url = rtrim($credentials->base_url ?? '', '/');
         $this->strategy = $credentials->strategy ?? 'local';
-        $this->email = $credentials->email ?? '';
+        $this->username = $credentials->username ?? '';
+        $this->email = $credentials->email ?? ($credentials->username ?? '');
         $this->password = $credentials->password ?? '';
         $this->user_token = $credentials->user_token ?? '';
+        $this->api_access_id = $credentials->{'api-access-id'} ?? ($credentials->api_access_id ?? '');
+        $this->api_access_secret = $credentials->{'api-access-secret'} ?? ($credentials->api_access_secret ?? '');
+        $this->auth_endpoint = $credentials->auth_endpoint ?? '/Auth/1.0/getAuthToken';
+        $this->collection_endpoint = $credentials->collection_endpoint ?? '/api/v1/collection';
     }
 
     private function generateToken()
     {
-        if (empty($this->base_url) || empty($this->email) || empty($this->password)) {
+        if (empty($this->base_url)) {
             Log::error('Payin9 generateToken: missing credentials');
             return '';
         }
 
-        $url = $this->base_url . '/authentication';
+        $url = $this->base_url . $this->auth_endpoint;
         $headers = [
+            'api-access-id: ' . $this->api_access_id,
+            'api-access-secret: ' . $this->api_access_secret,
             'Content-Type: application/json',
             'accept: application/json',
         ];
+        if (empty($this->password) || (empty($this->username) && empty($this->email))) {
+            Log::error('Payin9 generateToken: no compatible auth payload');
+            return '';
+        }
+        $username = $this->username ?: $this->email;
         $payload = [
             'strategy' => $this->strategy,
-            'email' => $this->email,
+            'username' => $username,
             'password' => $this->password,
         ];
 
@@ -79,7 +96,18 @@ class PayinNineController extends Controller
         ]);
 
         $decoded = json_decode($response, true);
-        return (string)($decoded['response']['accessUserToken'] ?? '');
+        if (!is_array($decoded)) {
+            return '';
+        }
+        return (string)(
+            $decoded['response']['accessUserToken']
+                ?? $decoded['accessUserToken']
+                ?? $decoded['response']['token']
+                ?? $decoded['token']
+                ?? $decoded['accessToken']
+                ?? $decoded['token']
+                ?? ''
+        );
     }
 
     public function welcome()
@@ -146,119 +174,147 @@ class PayinNineController extends Controller
 
     private function createOrderMiddle($amount, $user_id, $mode, $callback_url, $client_id, $name, $email, $mobile)
     {
-        $library = new BasicLibrary();
-        $activeService = $library->getActiveService($this->provider_id, $user_id);
-        if (($activeService['status_id'] ?? 0) != 1) {
-            return response()->json(['status' => 'failure', 'message' => 'Service not active!']);
-        }
+        try {
+            $library = new BasicLibrary();
+            $activeService = $library->getActiveService($this->provider_id, $user_id);
+            if (($activeService['status_id'] ?? 0) != 1) {
+                return response()->json(['status' => 'failure', 'message' => 'Service not active!']);
+            }
 
-        $jwt = $this->generateToken();
-        if (empty($jwt)) {
-            return response()->json(['status' => 'failure', 'message' => 'Unable to generate token']);
-        }
-        if (empty($this->user_token)) {
-            return response()->json(['status' => 'failure', 'message' => 'User token missing in API credentials']);
-        }
+            $jwt = $this->generateToken();
+            if (empty($jwt)) {
+                return response()->json(['status' => 'failure', 'message' => 'Unable to generate token']);
+            }
+            $ctime = now();
+            $member = Member::where('user_id', $user_id)->first();
+            $tempOrderToken = 'P9TMP' . time() . rand(1000, 9999);
+            $nextGatewayOrderId = ((int)(Gatewayorder::max('id') ?? 0)) + 1;
+            Gatewayorder::insert([
+                'id' => $nextGatewayOrderId,
+                'user_id' => $user_id,
+                'purpose' => 'Add Money',
+                'amount' => $amount,
+                'email' => $email,
+                'ip_address' => request()->ip(),
+                'created_at' => $ctime,
+                'status_id' => 3,
+                'api_id' => $this->api_id,
+                'callback_url' => $callback_url,
+                'payoutcallbackurl' => $member?->payoutcallbackurl ?? '',
+                'client_id' => $client_id,
+                'mode' => $mode,
+                'order_token' => $tempOrderToken,
+            ]);
+            $gatewayOrder = Gatewayorder::where('order_token', $tempOrderToken)
+                ->where('user_id', $user_id)
+                ->orderBy('id', 'DESC')
+                ->first();
+            if (!$gatewayOrder) {
+                return response()->json([
+                    'status' => 'failure',
+                    'message' => 'Unable to create gateway order',
+                ]);
+            }
+            $gatewayOrderId = (int)$gatewayOrder->id;
 
-        $ctime = now();
-        $member = Member::where('user_id', $user_id)->first();
-        $gatewayOrderId = Gatewayorder::insertGetId([
-            'user_id' => $user_id,
-            'purpose' => 'Add Money',
-            'amount' => $amount,
-            'email' => $email,
-            'ip_address' => request()->ip(),
-            'created_at' => $ctime,
-            'status_id' => 3,
-            'api_id' => $this->api_id,
-            'callback_url' => $callback_url,
-            'payoutcallbackurl' => $member->payoutcallbackurl ?? '',
-            'client_id' => $client_id,
-            'mode' => $mode,
-            'order_token' => 'P9TMP' . time() . rand(1000, 9999),
-        ]);
+            $refId = 'P9' . $gatewayOrderId . time();
+            Gatewayorder::where('id', $gatewayOrderId)->update(['order_token' => $refId]);
+            if ($mode === 'WEB' || empty($client_id)) {
+                Gatewayorder::where('id', $gatewayOrderId)->update(['client_id' => $refId]);
+            }
 
-        $refId = 'P9' . $gatewayOrderId . time();
-        Gatewayorder::where('id', $gatewayOrderId)->update(['order_token' => $refId]);
-        if ($mode === 'WEB' || empty($client_id)) {
-            Gatewayorder::where('id', $gatewayOrderId)->update(['client_id' => $refId]);
-        }
+            $splitName = preg_split('/\s+/', trim((string)$name));
+            $firstName = $splitName[0] ?? 'Customer';
+            $lastName = isset($splitName[1]) ? implode(' ', array_slice($splitName, 1)) : 'User';
+            $payload = [
+                'userTransactionId' => $refId,
+                'amount' => (float)$amount,
+                'customer_details' => [
+                    'first_name' => $firstName,
+                    'last_name' => $lastName,
+                    'email' => (string)$email,
+                    'phone' => (string)$mobile,
+                ],
+                'billing_address' => [
+                    'address' => 'N/A',
+                    'street' => 'N/A',
+                    'city' => 'N/A',
+                    'state' => 'N/A',
+                    'country' => 'IN',
+                    'pincode' => '000000',
+                ],
+            ];
+            if (!empty($this->user_token)) {
+                $payload['userToken'] = $this->user_token;
+            }
 
-        $splitName = preg_split('/\s+/', trim((string)$name));
-        $firstName = $splitName[0] ?? 'Customer';
-        $lastName = isset($splitName[1]) ? implode(' ', array_slice($splitName, 1)) : 'User';
-        $payload = [
-            'userTransactionId' => $refId,
-            'amount' => (float)$amount,
-            'userToken' => $this->user_token,
-            'customer_details' => [
-                'first_name' => $firstName,
-                'last_name' => $lastName,
-                'email' => (string)$email,
-                'phone' => (string)$mobile,
-            ],
-            'billing_address' => [
-                'address' => 'N/A',
-                'street' => 'N/A',
-                'city' => 'N/A',
-                'state' => 'N/A',
-                'country' => 'IN',
-                'pincode' => '000000',
-            ],
-        ];
+            $url = $this->base_url . $this->collection_endpoint;
+            $headers = [
+                'Authorization: Bearer ' . $jwt,
+                'api-access-id: ' . $this->api_access_id,
+                'api-access-secret: ' . $this->api_access_secret,
+                'Content-Type: application/json',
+                'accept: application/json',
+            ];
+            $response = Helpers::pay_curl_post($url, $headers, json_encode($payload), 'POST');
+            Apiresponse::insertGetId([
+                'message' => $response,
+                'api_type' => 1,
+                'created_at' => now(),
+                'ip_address' => request()->ip(),
+            ]);
 
-        $url = $this->base_url . '/api/v1/collection';
-        $headers = [
-            'Authorization: Bearer ' . $jwt,
-            'Content-Type: application/json',
-            'accept: application/json',
-        ];
-        $response = Helpers::pay_curl_post($url, $headers, json_encode($payload), 'POST');
-        Apiresponse::insertGetId([
-            'message' => $response,
-            'api_type' => 1,
-            'created_at' => now(),
-            'ip_address' => request()->ip(),
-        ]);
+            $res = json_decode($response, true);
+            if (!is_array($res)) {
+                return response()->json(['status' => 'failure', 'message' => 'Invalid provider response']);
+            }
 
-        $res = json_decode($response, true);
-        if (!is_array($res)) {
-            return response()->json(['status' => 'failure', 'message' => 'Invalid provider response']);
-        }
+            $statusMsg = strtolower((string)($res['statusMsg'] ?? ''));
+            $upiIntent = (string)($res['upiIntentStr'] ?? '');
+            $base64Qr = (string)($res['base64Qr'] ?? '');
+            $acquirerRef = (string)($res['acquirerRef'] ?? '');
+            $providerRef = (string)($res['referenceId'] ?? $refId);
+            $code = (int)($res['code'] ?? 0);
 
-        $statusMsg = strtolower((string)($res['statusMsg'] ?? ''));
-        $upiIntent = (string)($res['upiIntentStr'] ?? '');
-        $base64Qr = (string)($res['base64Qr'] ?? '');
-        $acquirerRef = (string)($res['acquirerRef'] ?? '');
-        $providerRef = (string)($res['referenceId'] ?? $refId);
-        $code = (int)($res['code'] ?? 0);
+            Gatewayorder::where('id', $gatewayOrderId)->update([
+                'remark' => $acquirerRef ?: $providerRef,
+            ]);
 
-        Gatewayorder::where('id', $gatewayOrderId)->update([
-            'remark' => $acquirerRef ?: $providerRef,
-        ]);
+            if ($code !== 200 && empty($upiIntent) && empty($base64Qr)) {
+                return response()->json([
+                    'status' => 'failure',
+                    'message' => $res['messageString'] ?? $res['statusMsg'] ?? 'Failed to create order',
+                ]);
+            }
 
-        if ($code !== 200 && empty($upiIntent) && empty($base64Qr)) {
+            $data = [
+                'txnid' => $gatewayOrderId,
+                'order_token' => $refId,
+                'transaction_id' => $acquirerRef,
+                'reference_id' => $providerRef,
+                'qrString' => $upiIntent,
+                'base64Qr' => $base64Qr,
+                'status' => $statusMsg ?: 'pending',
+            ];
+
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Order created successfully',
+                'data' => $data,
+            ]);
+        } catch (\Throwable $e) {
+            Log::error('Payin9 createOrderMiddle failed', [
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+                'user_id' => $user_id,
+                'amount' => $amount,
+            ]);
+            $debugMessage = (config('app.debug') || app()->environment('local')) ? $e->getMessage() : '';
             return response()->json([
                 'status' => 'failure',
-                'message' => $res['messageString'] ?? $res['statusMsg'] ?? 'Failed to create order',
-            ]);
+                'message' => empty($debugMessage) ? 'Server error during order creation' : $debugMessage,
+            ], 500);
         }
-
-        $data = [
-            'txnid' => $gatewayOrderId,
-            'order_token' => $refId,
-            'transaction_id' => $acquirerRef,
-            'reference_id' => $providerRef,
-            'qrString' => $upiIntent,
-            'base64Qr' => $base64Qr,
-            'status' => $statusMsg ?: 'pending',
-        ];
-
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Order created successfully',
-            'data' => $data,
-        ]);
     }
 
     public function viewQrcode(Request $request)

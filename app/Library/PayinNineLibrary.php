@@ -14,9 +14,14 @@ namespace App\library {
             $credentials = json_decode(optional(Api::find($this->api_id))->credentials);
             $this->base_url = rtrim($credentials->base_url ?? '', '/');
             $this->strategy = $credentials->strategy ?? 'local';
-            $this->email = $credentials->email ?? '';
+            $this->username = $credentials->username ?? '';
+            $this->email = $credentials->email ?? ($credentials->username ?? '');
             $this->password = $credentials->password ?? '';
             $this->user_token = $credentials->user_token ?? '';
+            $this->api_access_id = $credentials->{'api-access-id'} ?? ($credentials->api_access_id ?? '');
+            $this->api_access_secret = $credentials->{'api-access-secret'} ?? ($credentials->api_access_secret ?? '');
+            $this->auth_endpoint = $credentials->auth_endpoint ?? '/Auth/1.0/getAuthToken';
+            $this->disbursement_endpoint = $credentials->disbursement_endpoint ?? '/api/v1/disbursement';
         }
 
         public function transferNow($user_id, $mobile_number, $amount, $beneficiary_name, $account_number, $ifsc_code, $insert_id)
@@ -26,20 +31,9 @@ namespace App\library {
                 return ['status_id' => 2, 'txnid' => 'Authentication failed', 'payid' => ''];
             }
 
-            if (empty($this->user_token)) {
-                Apiresponse::insertGetId([
-                    'message' => 'Payin9 user_token missing',
-                    'api_type' => $this->api_id,
-                    'report_id' => $insert_id,
-                    'request_message' => 'credentials.user_token',
-                ]);
-                return ['status_id' => 2, 'txnid' => 'Configuration missing', 'payid' => ''];
-            }
-
             $nameParts = preg_split('/\s+/', trim((string)$beneficiary_name));
             $beneName = $beneficiary_name ?: 'Beneficiary';
             $payload = [
-                'token' => $this->user_token,
                 'userTransactionId' => (string)$insert_id,
                 'amount' => (float)$amount,
                 'payeeDetails' => [
@@ -56,10 +50,15 @@ namespace App\library {
                     'longitude' => '0',
                 ],
             ];
+            if (!empty($this->user_token)) {
+                $payload['token'] = $this->user_token;
+            }
 
-            $url = $this->base_url . '/api/v1/disbursement';
+            $url = $this->base_url . $this->disbursement_endpoint;
             $headers = [
                 'Authorization: Bearer ' . $jwt,
+                'api-access-id: ' . $this->api_access_id,
+                'api-access-secret: ' . $this->api_access_secret,
                 'Content-Type: application/json',
                 'accept: application/json',
             ];
@@ -95,17 +94,23 @@ namespace App\library {
 
         private function generateToken($insert_id)
         {
-            if (empty($this->base_url) || empty($this->email) || empty($this->password)) {
+            if (empty($this->base_url)) {
                 return '';
             }
 
-            $url = $this->base_url . '/authentication';
+            if (empty($this->password) || (empty($this->username) && empty($this->email))) {
+                return '';
+            }
+            $url = $this->base_url . $this->auth_endpoint;
+            $username = $this->username ?: $this->email;
             $payload = [
                 'strategy' => $this->strategy,
-                'email' => $this->email,
+                'username' => $username,
                 'password' => $this->password,
             ];
             $headers = [
+                'api-access-id: ' . $this->api_access_id,
+                'api-access-secret: ' . $this->api_access_secret,
                 'Content-Type: application/json',
                 'accept: application/json',
             ];
@@ -120,7 +125,18 @@ namespace App\library {
             ]);
 
             $res = json_decode($response, true);
-            return (string)($res['response']['accessUserToken'] ?? '');
+            if (!is_array($res)) {
+                return '';
+            }
+            return (string)(
+                $res['response']['accessUserToken']
+                    ?? $res['accessUserToken']
+                    ?? $res['response']['token']
+                    ?? $res['token']
+                    ?? $res['accessToken']
+                    ?? $res['token']
+                    ?? ''
+            );
         }
     }
 }
